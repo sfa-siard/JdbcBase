@@ -3,3 +3,6 @@ Release Notes for JdbcBase 2.0
 
 2.0.44
 First release of JdbcBase on GitHub.
+
+2.0.49
+.gitattributes added
