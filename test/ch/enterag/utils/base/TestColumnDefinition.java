@@ -14,6 +14,7 @@ public class TestColumnDefinition
   public String getType() { return _sType; }
   protected Object _oValue = null;
   public Object getValue() { return _oValue; }
+  public void setValue(Object oValue) { _oValue = oValue; }
   public String getValueLiteral()
   {
     String sValueLiteral = "NULL";
