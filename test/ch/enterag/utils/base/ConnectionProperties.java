@@ -71,5 +71,15 @@ public class ConnectionProperties
   {
     return getProperty("dbapassword"+_sDb);
   }
+  
+  public String getBlobPng(int iRecord)
+  {
+    return getProperty("blobpng"+String.valueOf(iRecord));
+  }
+  
+  public String getBlobFlac(int iRecord)
+  {
+    return getProperty("blobflac"+String.valueOf(iRecord));
+  }
 
 }
