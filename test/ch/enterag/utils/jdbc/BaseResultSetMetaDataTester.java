@@ -309,7 +309,7 @@ public abstract class BaseResultSetMetaDataTester
     {
       List<String> listIsCaseSensitive = new ArrayList<String>();
       for (int i = 1; i<= _rsmd.getColumnCount(); i++)
-        listIsCaseSensitive.add(String.valueOf(_rsmd.isAutoIncrement(i)));
+        listIsCaseSensitive.add(String.valueOf(_rsmd.isCaseSensitive(i)));
       println(listIsCaseSensitive);
     }
     catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
@@ -323,7 +323,7 @@ public abstract class BaseResultSetMetaDataTester
     {
       List<String> listIsSearchable = new ArrayList<String>();
       for (int i = 1; i<= _rsmd.getColumnCount(); i++)
-        listIsSearchable.add(String.valueOf(_rsmd.isAutoIncrement(i)));
+        listIsSearchable.add(String.valueOf(_rsmd.isSearchable(i)));
       println(listIsSearchable);
     }
     catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
@@ -337,7 +337,7 @@ public abstract class BaseResultSetMetaDataTester
     {
       List<String> listIsCurrency = new ArrayList<String>();
       for (int i = 1; i<= _rsmd.getColumnCount(); i++)
-        listIsCurrency.add(String.valueOf(_rsmd.isAutoIncrement(i)));
+        listIsCurrency.add(String.valueOf(_rsmd.isCurrency(i)));
       println(listIsCurrency);
     }
     catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
@@ -351,7 +351,7 @@ public abstract class BaseResultSetMetaDataTester
     {
       List<String> listIsNullable = new ArrayList<String>();
       for (int i = 1; i<= _rsmd.getColumnCount(); i++)
-        listIsNullable.add(String.valueOf(_rsmd.isAutoIncrement(i)));
+        listIsNullable.add(String.valueOf(_rsmd.isNullable(i)));
       println(listIsNullable);
     }
     catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
@@ -365,7 +365,7 @@ public abstract class BaseResultSetMetaDataTester
     {
       List<String> listIsSigned = new ArrayList<String>();
       for (int i = 1; i<= _rsmd.getColumnCount(); i++)
-        listIsSigned.add(String.valueOf(_rsmd.isAutoIncrement(i)));
+        listIsSigned.add(String.valueOf(_rsmd.isSigned(i)));
       println(listIsSigned);
     }
     catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
@@ -379,7 +379,7 @@ public abstract class BaseResultSetMetaDataTester
     {
       List<String> listIsReadOnly = new ArrayList<String>();
       for (int i = 1; i<= _rsmd.getColumnCount(); i++)
-        listIsReadOnly.add(String.valueOf(_rsmd.isAutoIncrement(i)));
+        listIsReadOnly.add(String.valueOf(_rsmd.isReadOnly(i)));
       println(listIsReadOnly);
     }
     catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
@@ -393,7 +393,7 @@ public abstract class BaseResultSetMetaDataTester
     {
       List<String> listIsWritable = new ArrayList<String>();
       for (int i = 1; i<= _rsmd.getColumnCount(); i++)
-        listIsWritable.add(String.valueOf(_rsmd.isAutoIncrement(i)));
+        listIsWritable.add(String.valueOf(_rsmd.isWritable(i)));
       println(listIsWritable);
     }
     catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
@@ -407,7 +407,7 @@ public abstract class BaseResultSetMetaDataTester
     {
       List<String> listIsDefinitelyWritable = new ArrayList<String>();
       for (int i = 1; i <= _rsmd.getColumnCount(); i++)
-        listIsDefinitelyWritable.add(String.valueOf(_rsmd.isAutoIncrement(i)));
+        listIsDefinitelyWritable.add(String.valueOf(_rsmd.isDefinitelyWritable(i)));
       println(listIsDefinitelyWritable);
     }
     catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
