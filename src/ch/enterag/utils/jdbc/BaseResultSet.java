@@ -29,6 +29,8 @@ public abstract class BaseResultSet
 {
   /** wrapped result set */
   private ResultSet _rsWrapped = null;
+  // enable manipulating wasNull() for Oracle LONGs!
+  protected boolean _bWasNull = false;
 
   /*------------------------------------------------------------------*/
   /** convert an AbstractMethodError into an SQLFeatureNotSupportedEception.
@@ -281,7 +283,7 @@ public abstract class BaseResultSet
   @Override
   public boolean wasNull() throws SQLException
   {
-    return _rsWrapped.wasNull();
+    return _bWasNull;
   } /* wasNull */
 
   /*------------------------------------------------------------------*/
@@ -305,7 +307,9 @@ public abstract class BaseResultSet
   @Override
   public String getString(int columnIndex) throws SQLException
   {
-    return _rsWrapped.getString(columnIndex);
+    String s = _rsWrapped.getString(columnIndex);
+    _bWasNull = _rsWrapped.wasNull();
+    return s;
   } /* getString */
 
   /*------------------------------------------------------------------*/
@@ -339,7 +343,9 @@ public abstract class BaseResultSet
   @Override
   public String getNString(int columnIndex) throws SQLException
   {
-    return _rsWrapped.getNString(columnIndex);
+    String s = _rsWrapped.getNString(columnIndex);
+    _bWasNull = _rsWrapped.wasNull();
+    return s;
   } /* getNString */
 
   /*------------------------------------------------------------------*/
@@ -373,7 +379,9 @@ public abstract class BaseResultSet
   @Override
   public boolean getBoolean(int columnIndex) throws SQLException
   {
-    return _rsWrapped.getBoolean(columnIndex);
+    boolean b = _rsWrapped.getBoolean(columnIndex);
+    _bWasNull = _rsWrapped.wasNull();
+    return b;
   } /* getBoolean */
 
   /*------------------------------------------------------------------*/
@@ -407,7 +415,9 @@ public abstract class BaseResultSet
   @Override
   public byte getByte(int columnIndex) throws SQLException
   {
-    return _rsWrapped.getByte(columnIndex);
+    byte by = _rsWrapped.getByte(columnIndex);
+    _bWasNull = _rsWrapped.wasNull();
+    return by;
   } /* getByte */
 
   /*------------------------------------------------------------------*/
@@ -440,7 +450,9 @@ public abstract class BaseResultSet
   @Override
   public short getShort(int columnIndex) throws SQLException
   {
-    return _rsWrapped.getShort(columnIndex);
+    Short sh = _rsWrapped.getShort(columnIndex);
+    _bWasNull = _rsWrapped.wasNull();
+    return sh;
   } /* getShort */
 
   /*------------------------------------------------------------------*/
@@ -473,7 +485,9 @@ public abstract class BaseResultSet
   @Override
   public int getInt(int columnIndex) throws SQLException
   {
-    return _rsWrapped.getInt(columnIndex);
+    int i = _rsWrapped.getInt(columnIndex);
+    _bWasNull = _rsWrapped.wasNull();
+    return i;
   } /* getInt */
 
   /*------------------------------------------------------------------*/
@@ -505,7 +519,9 @@ public abstract class BaseResultSet
   @Override
   public long getLong(int columnIndex) throws SQLException
   {
-    return _rsWrapped.getLong(columnIndex);
+    long l = _rsWrapped.getLong(columnIndex);
+    _bWasNull = _rsWrapped.wasNull();
+    return l;
   } /* getLong */
 
   /*------------------------------------------------------------------*/
@@ -538,7 +554,9 @@ public abstract class BaseResultSet
   @Override
   public float getFloat(int columnIndex) throws SQLException
   {
-    return _rsWrapped.getFloat(columnIndex);
+    float f = _rsWrapped.getFloat(columnIndex);
+    _bWasNull = _rsWrapped.wasNull();
+    return f;
   } /* getFloat */
 
   /*------------------------------------------------------------------*/
@@ -571,7 +589,9 @@ public abstract class BaseResultSet
   @Override
   public double getDouble(int columnIndex) throws SQLException
   {
-    return _rsWrapped.getDouble(columnIndex);
+    double d = _rsWrapped.getDouble(columnIndex);
+    _bWasNull = _rsWrapped.wasNull();
+    return d;
   } /* getDouble */
 
   /*------------------------------------------------------------------*/
@@ -605,7 +625,9 @@ public abstract class BaseResultSet
   @Override
   public BigDecimal getBigDecimal(int columnIndex) throws SQLException
   {
-    return _rsWrapped.getBigDecimal(columnIndex);
+    BigDecimal bd = _rsWrapped.getBigDecimal(columnIndex);
+    _bWasNull = _rsWrapped.wasNull();
+    return bd;
   } /* getBigDecimal */
 
   /*------------------------------------------------------------------*/
@@ -642,7 +664,9 @@ public abstract class BaseResultSet
   public BigDecimal getBigDecimal(int columnIndex, int scale)
     throws SQLException
   {
-    return _rsWrapped.getBigDecimal(columnIndex, scale);
+    BigDecimal bd = _rsWrapped.getBigDecimal(columnIndex, scale);
+    _bWasNull = _rsWrapped.wasNull();
+    return bd;
   } /* getBigDecimal */
 
   /*------------------------------------------------------------------*/
@@ -660,7 +684,9 @@ public abstract class BaseResultSet
   @Override
   public byte[] getBytes(int columnIndex) throws SQLException
   {
-    return _rsWrapped.getBytes(columnIndex);
+    byte[] buf = _rsWrapped.getBytes(columnIndex);
+    _bWasNull = _rsWrapped.wasNull();
+    return buf;
   } /* getBytes */
 
   /*------------------------------------------------------------------*/
@@ -694,7 +720,9 @@ public abstract class BaseResultSet
   @Override
   public Date getDate(int columnIndex) throws SQLException
   {
-    return _rsWrapped.getDate(columnIndex);
+    Date date = _rsWrapped.getDate(columnIndex);
+    _bWasNull = _rsWrapped.wasNull();
+    return date;
   } /* getDate */
 
   /*------------------------------------------------------------------*/
@@ -728,7 +756,9 @@ public abstract class BaseResultSet
   public Date getDate(int columnIndex, Calendar cal)
     throws SQLException
   {
-    return _rsWrapped.getDate(columnIndex, cal);
+    Date date = _rsWrapped.getDate(columnIndex, cal);
+    _bWasNull = _rsWrapped.wasNull();
+    return date;
   } /* getDate */
 
   /*------------------------------------------------------------------*/
@@ -745,7 +775,9 @@ public abstract class BaseResultSet
   @Override
   public Time getTime(int columnIndex) throws SQLException
   {
-    return _rsWrapped.getTime(columnIndex);
+    Time time = _rsWrapped.getTime(columnIndex);
+    _bWasNull = _rsWrapped.wasNull();
+    return time;
   } /* getTime */
 
   /*------------------------------------------------------------------*/
@@ -779,7 +811,9 @@ public abstract class BaseResultSet
   public Time getTime(int columnIndex, Calendar cal)
     throws SQLException
   {
-    return _rsWrapped.getTime(columnIndex, cal);
+    Time time = _rsWrapped.getTime(columnIndex, cal);
+    _bWasNull = _rsWrapped.wasNull();
+    return time;
   } /* getTime */
 
   /*------------------------------------------------------------------*/
@@ -796,7 +830,9 @@ public abstract class BaseResultSet
   @Override
   public Timestamp getTimestamp(int columnIndex) throws SQLException
   {
-    return _rsWrapped.getTimestamp(columnIndex);
+    Timestamp ts = _rsWrapped.getTimestamp(columnIndex);
+    _bWasNull = _rsWrapped.wasNull();
+    return ts;
   } /* getTimestamp */
 
   /*------------------------------------------------------------------*/
@@ -831,7 +867,9 @@ public abstract class BaseResultSet
   public Timestamp getTimestamp(int columnIndex, Calendar cal)
     throws SQLException
   {
-    return _rsWrapped.getTimestamp(columnIndex, cal);
+    Timestamp ts = _rsWrapped.getTimestamp(columnIndex, cal);
+    _bWasNull = _rsWrapped.wasNull();
+    return ts;
   } /* getTimestamp */
 
   /*------------------------------------------------------------------*/
@@ -849,7 +887,9 @@ public abstract class BaseResultSet
   public InputStream getAsciiStream(int columnIndex)
     throws SQLException
   {
-    return _rsWrapped.getAsciiStream(columnIndex);
+    InputStream is = _rsWrapped.getAsciiStream(columnIndex);
+    _bWasNull = _rsWrapped.wasNull();
+    return is;
   } /* getAsciiStream */
 
   /*------------------------------------------------------------------*/
@@ -922,7 +962,9 @@ public abstract class BaseResultSet
   public InputStream getUnicodeStream(int columnIndex)
     throws SQLException
   {
-    return _rsWrapped.getUnicodeStream(columnIndex);
+    InputStream is = _rsWrapped.getUnicodeStream(columnIndex);
+    _bWasNull = _rsWrapped.wasNull();
+    return is;
   } /* getUnicodeStream */
 
   /*------------------------------------------------------------------*/
@@ -940,7 +982,9 @@ public abstract class BaseResultSet
   @Override
   public Reader getCharacterStream(int columnIndex) throws SQLException
   {
-    return _rsWrapped.getCharacterStream(columnIndex);
+    Reader rdr = _rsWrapped.getCharacterStream(columnIndex);
+    _bWasNull = _rsWrapped.wasNull();
+    return rdr;
   } /* getCharacterStream */
 
   /*------------------------------------------------------------------*/
@@ -1012,7 +1056,9 @@ public abstract class BaseResultSet
   public Reader getNCharacterStream(int columnIndex)
     throws SQLException
   {
-    return _rsWrapped.getNCharacterStream(columnIndex);
+    Reader rdr = _rsWrapped.getNCharacterStream(columnIndex);
+    _bWasNull = _rsWrapped.wasNull();
+    return rdr;
   } /* getNCharacterStream */
 
   /*------------------------------------------------------------------*/
@@ -1066,7 +1112,9 @@ public abstract class BaseResultSet
   public InputStream getBinaryStream(int columnIndex)
     throws SQLException
   {
-    return _rsWrapped.getBinaryStream(columnIndex);
+    InputStream is = _rsWrapped.getBinaryStream(columnIndex);
+    _bWasNull = _rsWrapped.wasNull();
+    return is;
   } /* getBinaryStream */
 
   /*------------------------------------------------------------------*/
@@ -1137,7 +1185,9 @@ public abstract class BaseResultSet
   @Override
   public Object getObject(int columnIndex) throws SQLException
   {
-    return _rsWrapped.getObject(columnIndex);
+    Object o = _rsWrapped.getObject(columnIndex);
+    _bWasNull = _rsWrapped.wasNull();
+    return o;
   } /* getObject */
 
   /*------------------------------------------------------------------*/
@@ -1190,7 +1240,9 @@ public abstract class BaseResultSet
   public Object getObject(int columnIndex, Map<String, Class<?>> map)
     throws SQLException
   {
-    return _rsWrapped.getObject(columnIndex, map);
+    Object o = _rsWrapped.getObject(columnIndex, map);
+    _bWasNull = _rsWrapped.wasNull();
+    return o;
   } /* getObject */
 
   /*------------------------------------------------------------------*/
@@ -1209,7 +1261,11 @@ public abstract class BaseResultSet
     throws SQLException
   {
     T o = null;
-    try { o = _rsWrapped.getObject(columnIndex, type); }
+    try 
+    { 
+      o = _rsWrapped.getObject(columnIndex, type);
+      _bWasNull = _rsWrapped.wasNull();
+    }
     catch (AbstractMethodError ame) { throwUndefinedMethod(ame); }
     return o;
   } /* getObject */
@@ -1228,7 +1284,9 @@ public abstract class BaseResultSet
   @Override
   public Ref getRef(int columnIndex) throws SQLException
   {
-    return _rsWrapped.getRef(columnIndex);
+    Ref ref = _rsWrapped.getRef(columnIndex);
+    _bWasNull = _rsWrapped.wasNull();
+    return ref;
   } /* getRef */
 
   /*------------------------------------------------------------------*/
@@ -1260,7 +1318,9 @@ public abstract class BaseResultSet
   @Override
   public Blob getBlob(int columnIndex) throws SQLException
   {
-    return _rsWrapped.getBlob(columnIndex);
+    Blob blob = _rsWrapped.getBlob(columnIndex);
+    _bWasNull = _rsWrapped.wasNull();
+    return blob;
   } /* getBlob */
 
   /*------------------------------------------------------------------*/
@@ -1329,7 +1389,9 @@ public abstract class BaseResultSet
   @Override
   public Clob getClob(int columnIndex) throws SQLException
   {
-    return _rsWrapped.getClob(columnIndex);
+    Clob clob = _rsWrapped.getClob(columnIndex);
+    _bWasNull = _rsWrapped.wasNull();
+    return clob;
   } /* getClob */
 
   /*------------------------------------------------------------------*/
@@ -1398,7 +1460,9 @@ public abstract class BaseResultSet
   @Override
   public NClob getNClob(int columnIndex) throws SQLException
   {
-    return _rsWrapped.getNClob(columnIndex);
+    NClob nclob = _rsWrapped.getNClob(columnIndex);
+    _bWasNull = _rsWrapped.wasNull();
+    return nclob;
   } /* getNClob */
 
   /*------------------------------------------------------------------*/
@@ -1468,7 +1532,9 @@ public abstract class BaseResultSet
   @Override
   public Array getArray(int columnIndex) throws SQLException
   {
-    return _rsWrapped.getArray(columnIndex);
+    Array array = _rsWrapped.getArray(columnIndex);
+    _bWasNull = _rsWrapped.wasNull();
+    return array;
   } /* getArray */
 
   /*------------------------------------------------------------------*/
@@ -1501,7 +1567,9 @@ public abstract class BaseResultSet
   @Override
   public RowId getRowId(int columnIndex) throws SQLException
   {
-    return _rsWrapped.getRowId(columnIndex);
+    RowId rowid = _rsWrapped.getRowId(columnIndex);
+    _bWasNull = _rsWrapped.wasNull();
+    return rowid;
   } /* getRowId */
 
   /*------------------------------------------------------------------*/
@@ -1534,7 +1602,9 @@ public abstract class BaseResultSet
   @Override
   public SQLXML getSQLXML(int columnIndex) throws SQLException
   {
-    return _rsWrapped.getSQLXML(columnIndex);
+    SQLXML sqlxml = _rsWrapped.getSQLXML(columnIndex);
+    _bWasNull = _rsWrapped.wasNull();
+    return sqlxml;
   } /* getSQLXML */
 
   /*------------------------------------------------------------------*/
@@ -1597,7 +1667,9 @@ public abstract class BaseResultSet
   @Override
   public URL getURL(int columnIndex) throws SQLException
   {
-    return _rsWrapped.getURL(columnIndex);
+    URL url = _rsWrapped.getURL(columnIndex);
+    _bWasNull = _rsWrapped.wasNull();
+    return url;
   } /* getURL */
 
   /*------------------------------------------------------------------*/
