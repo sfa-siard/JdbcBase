@@ -1,6 +1,9 @@
 Release Notes for JdbcBase 2.1
 ==============================
 
+2.1.??
+More flexible wasNull-Handling.
+
 2.1.0 
 Release for JAVA 10.
 
