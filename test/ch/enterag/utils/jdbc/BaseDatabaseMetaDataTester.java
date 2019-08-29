@@ -1518,6 +1518,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.getRowIdLifetime())); } 
+    catch(SQLFeatureNotSupportedException sfnse) { System.out.println(EU.getExceptionMessage(sfnse)); }
     catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
   }
 
