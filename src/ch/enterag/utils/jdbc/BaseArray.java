@@ -1,6 +1,5 @@
 /*======================================================================
 BaseArray implements a wrapped Array.
-Version     : $Id: $
 Application : SIARD2
 Description : BaseArray implements a wrapped Array.
               See https://docs.oracle.com/javase/7/docs/api/java/sql/Array.html

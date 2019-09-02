@@ -1,0 +1,104 @@
+/*======================================================================
+BaseBlob implements a wrapped Blob
+Application : SIARD2
+Description : BaseBlob implements a wrapped Blob
+              See https://docs.oracle.com/javase/7/docs/api/java/sql/Blob.html
+Platform    : Java 8-10   
+------------------------------------------------------------------------
+Copyright  : 2019, Enter AG, Rüti ZH, Switzerland
+Created    : 02.09.2019, Hartwig Thomas
+======================================================================*/
+package ch.enterag.utils.jdbc;
+
+import java.io.*;
+import java.sql.*;
+
+/*====================================================================*/
+/** BaseBlob implements a wrapped Blob and serves as a base
+ * for derived JDBC wrappers.
+ * @author Hartwig Thomas
+ */
+public abstract class BaseBlob
+  implements Blob
+{
+  /** wrapped blob */
+  private Blob _blobWrapped = null;
+  
+  /*------------------------------------------------------------------*/
+  /** constructor
+   * @param blobWrapped Blob to be wrapped or null. 
+   */
+  public BaseBlob(Blob blobWrapped)
+  {
+    _blobWrapped = blobWrapped;
+  } /* constructor BaseClob */
+
+  @Override
+  public long length() throws SQLException
+  {
+    return _blobWrapped.length();
+  }
+
+  @Override
+  public byte[] getBytes(long pos, int length) throws SQLException
+  {
+    return _blobWrapped.getBytes(pos, length);
+  }
+
+  @Override
+  public InputStream getBinaryStream() throws SQLException
+  {
+    return _blobWrapped.getBinaryStream();
+  }
+
+  @Override
+  public long position(byte[] pattern, long start) throws SQLException
+  {
+    return _blobWrapped.position(pattern, start);
+  }
+
+  @Override
+  public long position(Blob pattern, long start) throws SQLException
+  {
+    return _blobWrapped.position(pattern, start);
+  }
+
+  @Override
+  public int setBytes(long pos, byte[] bytes) throws SQLException
+  {
+    return _blobWrapped.setBytes(pos, bytes);
+  }
+
+  @Override
+  public int setBytes(long pos, byte[] bytes, int offset, int len)
+    throws SQLException
+  {
+    return _blobWrapped.setBytes(pos, bytes, offset, len);
+  }
+
+  @Override
+  public OutputStream setBinaryStream(long pos) throws SQLException
+  {
+    return _blobWrapped.setBinaryStream(pos);
+  }
+
+  @Override
+  public void truncate(long len) throws SQLException
+  {
+    _blobWrapped.truncate(len);    
+  }
+
+  @Override
+  public void free() throws SQLException
+  {
+    _blobWrapped.free();
+  }
+
+  @Override
+  public InputStream getBinaryStream(long pos, long length)
+    throws SQLException
+  {
+    return _blobWrapped.getBinaryStream();
+  }
+
+}
