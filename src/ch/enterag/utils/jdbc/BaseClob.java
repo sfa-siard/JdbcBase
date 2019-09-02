@@ -33,42 +33,40 @@ public abstract class BaseClob
     _clobWrapped = clobWrapped;
   } /* constructor BaseClob */
 
+  /*------------------------------------------------------------------*/
+  /** {@inheritDoc} */
   @Override
   public long length() throws SQLException
   {
     return _clobWrapped.length();
   }
 
+  /*------------------------------------------------------------------*/
+  /** {@inheritDoc} */
   @Override
   public String getSubString(long pos, int length) throws SQLException
   {
     return _clobWrapped.getSubString(pos, length);
   }
 
-  @Override
-  public Reader getCharacterStream() throws SQLException
-  {
-    return _clobWrapped.getCharacterStream();
-  }
-
-  @Override
-  public InputStream getAsciiStream() throws SQLException
-  {
-    return _clobWrapped.getAsciiStream();
-  }
-
+  /*------------------------------------------------------------------*/
+  /** {@inheritDoc} */
   @Override
   public long position(String searchstr, long start) throws SQLException
   {
     return _clobWrapped.position(searchstr, start);
   }
 
+  /*------------------------------------------------------------------*/
+  /** {@inheritDoc} */
   @Override
   public long position(Clob searchclob, long start) throws SQLException
   {
     return _clobWrapped.position(searchclob, start);
   }
 
+  /*------------------------------------------------------------------*/
+  /** {@inheritDoc} */
   @Override
   public int setString(long pos, String str) throws SQLException
   {
@@ -76,6 +74,8 @@ public abstract class BaseClob
     return _clobWrapped.setString(pos, str);
   }
 
+  /*------------------------------------------------------------------*/
+  /** {@inheritDoc} */
   @Override
   public int setString(long pos, String str, int offset, int len)
     throws SQLException
@@ -83,30 +83,32 @@ public abstract class BaseClob
     return _clobWrapped.setString(pos, str, offset, len);
   }
 
+  /*------------------------------------------------------------------*/
+  /** {@inheritDoc} */
+  @Override
+  public InputStream getAsciiStream() throws SQLException
+  {
+    return _clobWrapped.getAsciiStream();
+  }
+
+  /*------------------------------------------------------------------*/
+  /** {@inheritDoc} */
   @Override
   public OutputStream setAsciiStream(long pos) throws SQLException
   {
     return _clobWrapped.setAsciiStream(pos);
   }
 
+  /*------------------------------------------------------------------*/
+  /** {@inheritDoc} */
   @Override
-  public Writer setCharacterStream(long pos) throws SQLException
+  public Reader getCharacterStream() throws SQLException
   {
-    return _clobWrapped.setCharacterStream(pos);
+    return _clobWrapped.getCharacterStream();
   }
 
-  @Override
-  public void truncate(long len) throws SQLException
-  {
-    _clobWrapped.truncate(len);
-  }
-
-  @Override
-  public void free() throws SQLException
-  {
-    _clobWrapped.free();
-  }
-
+  /*------------------------------------------------------------------*/
+  /** {@inheritDoc} */
   @Override
   public Reader getCharacterStream(long pos, long length)
     throws SQLException
@@ -114,4 +116,46 @@ public abstract class BaseClob
     return _clobWrapped.getCharacterStream(pos, length);
   }
 
+  /*------------------------------------------------------------------*/
+  /** {@inheritDoc} */
+  @Override
+  public Writer setCharacterStream(long pos) throws SQLException
+  {
+    return _clobWrapped.setCharacterStream(pos);
+  }
+
+  /*------------------------------------------------------------------*/
+  /** {@inheritDoc} */
+  @Override
+  public void truncate(long len) throws SQLException
+  {
+    _clobWrapped.truncate(len);
+  }
+
+  /*------------------------------------------------------------------*/
+  /** {@inheritDoc} */
+  @Override
+  public void free() throws SQLException
+  {
+    _clobWrapped.free();
+  }
+
+  /*------------------------------------------------------------------*/
+  /** as for all other JDBC interfaces .... */
+  public boolean isWrapperFor(Class<?> iface) throws SQLException
+  {
+    return (iface == Clob.class);
+  } /* isWrapperFor */
+
+  /*------------------------------------------------------------------*/
+  /** as for all other JDBC interfaces .... */
+  @SuppressWarnings("unchecked")
+  public <T> T unwrap(Class<T> iface) throws SQLException
+  {
+    T wrapped = null;
+    if (isWrapperFor(iface))
+      wrapped = (T)_clobWrapped;
+    return wrapped;
+  } /* unwrap */
+  
 } /* BaseClob */

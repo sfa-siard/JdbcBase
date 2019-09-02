@@ -33,42 +33,48 @@ public abstract class BaseBlob
     _blobWrapped = blobWrapped;
   } /* constructor BaseClob */
 
+  /*------------------------------------------------------------------*/
+  /** {@inheritDoc} */
   @Override
   public long length() throws SQLException
   {
     return _blobWrapped.length();
   }
 
-  @Override
-  public byte[] getBytes(long pos, int length) throws SQLException
-  {
-    return _blobWrapped.getBytes(pos, length);
-  }
-
-  @Override
-  public InputStream getBinaryStream() throws SQLException
-  {
-    return _blobWrapped.getBinaryStream();
-  }
-
+  /*------------------------------------------------------------------*/
+  /** {@inheritDoc} */
   @Override
   public long position(byte[] pattern, long start) throws SQLException
   {
     return _blobWrapped.position(pattern, start);
   }
 
+  /*------------------------------------------------------------------*/
+  /** {@inheritDoc} */
   @Override
   public long position(Blob pattern, long start) throws SQLException
   {
     return _blobWrapped.position(pattern, start);
   }
 
+  /*------------------------------------------------------------------*/
+  /** {@inheritDoc} */
+  @Override
+  public byte[] getBytes(long pos, int length) throws SQLException
+  {
+    return _blobWrapped.getBytes(pos, length);
+  }
+
+  /*------------------------------------------------------------------*/
+  /** {@inheritDoc} */
   @Override
   public int setBytes(long pos, byte[] bytes) throws SQLException
   {
     return _blobWrapped.setBytes(pos, bytes);
   }
 
+  /*------------------------------------------------------------------*/
+  /** {@inheritDoc} */
   @Override
   public int setBytes(long pos, byte[] bytes, int offset, int len)
     throws SQLException
@@ -76,24 +82,16 @@ public abstract class BaseBlob
     return _blobWrapped.setBytes(pos, bytes, offset, len);
   }
 
+  /*------------------------------------------------------------------*/
+  /** {@inheritDoc} */
   @Override
-  public OutputStream setBinaryStream(long pos) throws SQLException
+  public InputStream getBinaryStream() throws SQLException
   {
-    return _blobWrapped.setBinaryStream(pos);
+    return _blobWrapped.getBinaryStream();
   }
 
-  @Override
-  public void truncate(long len) throws SQLException
-  {
-    _blobWrapped.truncate(len);    
-  }
-
-  @Override
-  public void free() throws SQLException
-  {
-    _blobWrapped.free();
-  }
-
+  /*------------------------------------------------------------------*/
+  /** {@inheritDoc} */
   @Override
   public InputStream getBinaryStream(long pos, long length)
     throws SQLException
@@ -101,4 +99,46 @@ public abstract class BaseBlob
     return _blobWrapped.getBinaryStream();
   }
 
+  /*------------------------------------------------------------------*/
+  /** {@inheritDoc} */
+  @Override
+  public OutputStream setBinaryStream(long pos) throws SQLException
+  {
+    return _blobWrapped.setBinaryStream(pos);
+  }
+
+  /*------------------------------------------------------------------*/
+  /** {@inheritDoc} */
+  @Override
+  public void truncate(long len) throws SQLException
+  {
+    _blobWrapped.truncate(len);    
+  }
+
+  /*------------------------------------------------------------------*/
+  /** {@inheritDoc} */
+  @Override
+  public void free() throws SQLException
+  {
+    _blobWrapped.free();
+  }
+
+  /*------------------------------------------------------------------*/
+  /** as for all other JDBC interfaces .... */
+  public boolean isWrapperFor(Class<?> iface) throws SQLException
+  {
+    return (iface == Blob.class);
+  } /* isWrapperFor */
+
+  /*------------------------------------------------------------------*/
+  /** as for all other JDBC interfaces .... */
+  @SuppressWarnings("unchecked")
+  public <T> T unwrap(Class<T> iface) throws SQLException
+  {
+    T wrapped = null;
+    if (isWrapperFor(iface))
+      wrapped = (T)_blobWrapped;
+    return wrapped;
+  } /* unwrap */
+  
 }
