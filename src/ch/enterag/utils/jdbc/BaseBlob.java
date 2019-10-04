@@ -31,7 +31,7 @@ public abstract class BaseBlob
   public BaseBlob(Blob blobWrapped)
   {
     _blobWrapped = blobWrapped;
-  } /* constructor BaseClob */
+  } /* constructor BaseBlob */
 
   /*------------------------------------------------------------------*/
   /** {@inheritDoc} */
