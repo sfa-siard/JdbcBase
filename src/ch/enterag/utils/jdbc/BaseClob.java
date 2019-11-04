@@ -70,7 +70,6 @@ public abstract class BaseClob
   @Override
   public int setString(long pos, String str) throws SQLException
   {
-    // TODO Auto-generated method stub
     return _clobWrapped.setString(pos, str);
   }
 
