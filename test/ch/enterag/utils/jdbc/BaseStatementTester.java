@@ -16,6 +16,13 @@ public abstract class BaseStatementTester
   /* setUp must create the statement and call this method */
   protected void setStatement(Statement stmt) { _stmt = stmt; }
   
+  protected void clean()
+    throws SQLException
+  {
+    try { getStatement().executeUpdate(_sSQL_CLEAN); }
+    catch(SQLException se) { getStatement().getConnection().rollback(); }
+  } /* clean */
+  
   private String getCallingMethod(int iDepth)
   {
     String sCallingMethod = null;
@@ -75,9 +82,12 @@ public abstract class BaseStatementTester
   public void testExecuteUpdate()
   {
     enter();
-    try { _stmt.executeUpdate(_sSQL_CLEAN); }
-    catch(SQLException se) {}
-    try { _stmt.executeUpdate(_sSQL_DDL); }
+    try 
+    { 
+      clean();
+      _stmt.executeUpdate(_sSQL_DDL);
+      clean();
+    }
     catch(SQLTimeoutException ste) { fail(EU.getExceptionMessage(ste)); }
     catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
   } /* testExecuteUpdate */
@@ -86,9 +96,12 @@ public abstract class BaseStatementTester
   public void testExecuteUpdate_String_int()
   {
     enter();
-    try { _stmt.executeUpdate(_sSQL_CLEAN); }
-    catch(SQLException se) {}
-    try { _stmt.executeUpdate(_sSQL_DDL, Statement.NO_GENERATED_KEYS); }
+    try 
+    {
+      clean();
+      _stmt.executeUpdate(_sSQL_DDL, Statement.NO_GENERATED_KEYS);
+      clean();
+    }
     catch(SQLFeatureNotSupportedException sfnse) { System.out.println(EU.getExceptionMessage(sfnse)); }
     catch(SQLTimeoutException ste) { fail(EU.getExceptionMessage(ste)); }
     catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
@@ -98,9 +111,12 @@ public abstract class BaseStatementTester
   public void testExecuteUpdate_String_AInt()
   {
     enter();
-    try { _stmt.executeUpdate(_sSQL_CLEAN); }
-    catch(SQLException se) {}
-    try { _stmt.executeUpdate(_sSQL_DDL, new int[] {1,2}); }
+    try 
+    {
+      clean();
+      _stmt.executeUpdate(_sSQL_DDL, new int[] {1,2});
+      clean();
+    }
     catch(SQLFeatureNotSupportedException sfnse) { System.out.println(EU.getExceptionMessage(sfnse)); }
     catch(SQLTimeoutException ste) { fail(EU.getExceptionMessage(ste)); }
     catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
@@ -110,9 +126,12 @@ public abstract class BaseStatementTester
   public void testExecuteUpdate_String_AString()
   {
     enter();
-    try { _stmt.executeUpdate(_sSQL_CLEAN); }
-    catch(SQLException se) {}
-    try { _stmt.executeUpdate(_sSQL_DDL, new String[]{"COL_A", "COL_B"}); }
+    try 
+    {
+      clean();
+      _stmt.executeUpdate(_sSQL_DDL, new String[]{"COL_A", "COL_B"});
+      clean();
+    }
     catch(SQLFeatureNotSupportedException sfnse) { System.out.println(EU.getExceptionMessage(sfnse)); }
     catch(SQLTimeoutException ste) { fail(EU.getExceptionMessage(ste)); }
     catch(SQLException se) { fail(EU.getExceptionMessage(se)); }

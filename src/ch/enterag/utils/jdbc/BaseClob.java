@@ -1,135 +1,149 @@
 /*======================================================================
-BaseArray implements a wrapped Array.
+BaseClob implements a wrapped Clob
 Application : SIARD2
-Description : BaseArray implements a wrapped Array.
-              See https://docs.oracle.com/javase/7/docs/api/java/sql/Array.html
-Platform    : Java 7   
+Description : BaseClob implements a wrapped Clob
+              See https://docs.oracle.com/javase/7/docs/api/java/sql/Clob.html
+Platform    : Java 8-10   
 ------------------------------------------------------------------------
-Copyright  : 2016, Enter AG, Rüti ZH, Switzerland
-Created    : 25.03.2016, Hartwig Thomas
+Copyright  : 2019, Enter AG, Rüti ZH, Switzerland
+Created    : 02.09.2019, Hartwig Thomas
 ======================================================================*/
 package ch.enterag.utils.jdbc;
 
+import java.io.*;
 import java.sql.*;
-import java.util.Map;
 
 /*====================================================================*/
-/** BaseArray implements a wrapped Array and serves as a base
+/** BaseClob implements a wrapped Clob and serves as a base
  * for derived JDBC wrappers.
  * @author Hartwig Thomas
  */
-public abstract class BaseArray
-  implements Array
+public abstract class BaseClob
+  implements Clob
 {
-  /** wrapped array */
-  private Array _arrayWrapped = null;
-
+  /** wrapped clob */
+  private Clob _clobWrapped = null;
+  
   /*------------------------------------------------------------------*/
   /** constructor
-   * @param arrayWrapped connection to be wrapped.
+   * @param clobWrapped Clob to be wrapped or null. 
    */
-  public BaseArray(Array arrayWrapped)
+  public BaseClob(Clob clobWrapped)
   {
-    _arrayWrapped = arrayWrapped;
-  } /* constructor BaseArray */
+    _clobWrapped = clobWrapped;
+  } /* constructor BaseClob */
 
   /*------------------------------------------------------------------*/
   /** {@inheritDoc} */
   @Override
-  public String getBaseTypeName() throws SQLException
+  public long length() throws SQLException
   {
-    return _arrayWrapped.getBaseTypeName();
-  } /* getBaseTypeName */
+    return _clobWrapped.length();
+  }
 
   /*------------------------------------------------------------------*/
   /** {@inheritDoc} */
   @Override
-  public int getBaseType() throws SQLException
+  public String getSubString(long pos, int length) throws SQLException
   {
-    return _arrayWrapped.getBaseType();
-  } /* getBaseType */
+    return _clobWrapped.getSubString(pos, length);
+  }
 
   /*------------------------------------------------------------------*/
   /** {@inheritDoc} */
   @Override
-  public Object getArray() throws SQLException
+  public long position(String searchstr, long start) throws SQLException
   {
-    return _arrayWrapped.getArray();
-  } /* getArray */
+    return _clobWrapped.position(searchstr, start);
+  }
 
   /*------------------------------------------------------------------*/
   /** {@inheritDoc} */
   @Override
-  public Object getArray(Map<String, Class<?>> map) throws SQLException
+  public long position(Clob searchclob, long start) throws SQLException
   {
-    return _arrayWrapped.getArray(map);
-  } /* getArray */
+    return _clobWrapped.position(searchclob, start);
+  }
 
   /*------------------------------------------------------------------*/
   /** {@inheritDoc} */
   @Override
-  public Object getArray(long index, int count) throws SQLException
+  public int setString(long pos, String str) throws SQLException
   {
-    return _arrayWrapped.getArray(index, count);
-  } /* getArray */
+    return _clobWrapped.setString(pos, str);
+  }
 
   /*------------------------------------------------------------------*/
   /** {@inheritDoc} */
   @Override
-  public Object getArray(long index, int count,
-    Map<String, Class<?>> map) throws SQLException
-  {
-    return _arrayWrapped.getArray(index, count, map);
-  } /* getArray */
-
-  /*------------------------------------------------------------------*/
-  /** {@inheritDoc} */
-  @Override
-  public ResultSet getResultSet() throws SQLException
-  {
-    return _arrayWrapped.getResultSet();
-  } /* getResultSet */
-
-  /*------------------------------------------------------------------*/
-  /** {@inheritDoc} */
-  @Override
-  public ResultSet getResultSet(Map<String, Class<?>> map)
+  public int setString(long pos, String str, int offset, int len)
     throws SQLException
   {
-    return _arrayWrapped.getResultSet(map);
-  } /* getResultSet */
+    return _clobWrapped.setString(pos, str, offset, len);
+  }
 
   /*------------------------------------------------------------------*/
   /** {@inheritDoc} */
   @Override
-  public ResultSet getResultSet(long index, int count)
+  public InputStream getAsciiStream() throws SQLException
+  {
+    return _clobWrapped.getAsciiStream();
+  }
+
+  /*------------------------------------------------------------------*/
+  /** {@inheritDoc} */
+  @Override
+  public OutputStream setAsciiStream(long pos) throws SQLException
+  {
+    return _clobWrapped.setAsciiStream(pos);
+  }
+
+  /*------------------------------------------------------------------*/
+  /** {@inheritDoc} */
+  @Override
+  public Reader getCharacterStream() throws SQLException
+  {
+    return _clobWrapped.getCharacterStream();
+  }
+
+  /*------------------------------------------------------------------*/
+  /** {@inheritDoc} */
+  @Override
+  public Reader getCharacterStream(long pos, long length)
     throws SQLException
   {
-    return _arrayWrapped.getResultSet(index, count);
-  } /* getResultSet */
+    return _clobWrapped.getCharacterStream(pos, length);
+  }
 
   /*------------------------------------------------------------------*/
   /** {@inheritDoc} */
   @Override
-  public ResultSet getResultSet(long index, int count,
-    Map<String, Class<?>> map) throws SQLException
+  public Writer setCharacterStream(long pos) throws SQLException
   {
-    return _arrayWrapped.getResultSet(index, count, map);
-  } /* getResultSet */
+    return _clobWrapped.setCharacterStream(pos);
+  }
+
+  /*------------------------------------------------------------------*/
+  /** {@inheritDoc} */
+  @Override
+  public void truncate(long len) throws SQLException
+  {
+    _clobWrapped.truncate(len);
+  }
 
   /*------------------------------------------------------------------*/
   /** {@inheritDoc} */
   @Override
   public void free() throws SQLException
   {
-    _arrayWrapped.free();
+    _clobWrapped.free();
   }
-  
+
   /*------------------------------------------------------------------*/
   /** as for all other JDBC interfaces .... */
   public boolean isWrapperFor(Class<?> iface) throws SQLException
   {
-    return (iface == Array.class);
+    return (iface == Clob.class);
   } /* isWrapperFor */
 
   /*------------------------------------------------------------------*/
@@ -139,8 +153,8 @@ public abstract class BaseArray
   {
     T wrapped = null;
     if (isWrapperFor(iface))
-      wrapped = (T)_arrayWrapped;
+      wrapped = (T)_clobWrapped;
     return wrapped;
   } /* unwrap */
   
-} /* BaseArray */
+} /* BaseClob */
