@@ -19,7 +19,11 @@ public abstract class BaseStatementTester
   protected void clean()
     throws SQLException
   {
-    try { getStatement().executeUpdate(_sSQL_CLEAN); }
+    try 
+    { 
+      getStatement().executeUpdate(_sSQL_CLEAN);
+      getStatement().getConnection().commit();
+    }
     catch(SQLException se) { getStatement().getConnection().rollback(); }
   } /* clean */
   
@@ -86,10 +90,14 @@ public abstract class BaseStatementTester
     { 
       clean();
       _stmt.executeUpdate(_sSQL_DDL);
-      clean();
     }
     catch(SQLTimeoutException ste) { fail(EU.getExceptionMessage(ste)); }
     catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    finally 
+    { 
+      try { clean(); }
+      catch(SQLException se1) { fail(EU.getExceptionMessage(se1)); }
+    }
   } /* testExecuteUpdate */
   
   @Test
@@ -100,11 +108,15 @@ public abstract class BaseStatementTester
     {
       clean();
       _stmt.executeUpdate(_sSQL_DDL, Statement.NO_GENERATED_KEYS);
-      clean();
     }
     catch(SQLFeatureNotSupportedException sfnse) { System.out.println(EU.getExceptionMessage(sfnse)); }
     catch(SQLTimeoutException ste) { fail(EU.getExceptionMessage(ste)); }
     catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    finally 
+    { 
+      try { clean(); }
+      catch(SQLException se1) { fail(EU.getExceptionMessage(se1)); }
+    }
   } /* testExecuteUpdate_String_int */
   
   @Test
@@ -115,11 +127,15 @@ public abstract class BaseStatementTester
     {
       clean();
       _stmt.executeUpdate(_sSQL_DDL, new int[] {1,2});
-      clean();
     }
     catch(SQLFeatureNotSupportedException sfnse) { System.out.println(EU.getExceptionMessage(sfnse)); }
     catch(SQLTimeoutException ste) { fail(EU.getExceptionMessage(ste)); }
     catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    finally 
+    { 
+      try { clean(); }
+      catch(SQLException se1) { fail(EU.getExceptionMessage(se1)); }
+    }
   } /* testExecuteUpdate_String_AInt */
   
   @Test
@@ -130,11 +146,15 @@ public abstract class BaseStatementTester
     {
       clean();
       _stmt.executeUpdate(_sSQL_DDL, new String[]{"COL_A", "COL_B"});
-      clean();
     }
     catch(SQLFeatureNotSupportedException sfnse) { System.out.println(EU.getExceptionMessage(sfnse)); }
     catch(SQLTimeoutException ste) { fail(EU.getExceptionMessage(ste)); }
     catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    finally 
+    { 
+      try { clean(); }
+      catch(SQLException se1) { fail(EU.getExceptionMessage(se1)); }
+    }
   } /* testExecuteUpdate */
   
   @Test

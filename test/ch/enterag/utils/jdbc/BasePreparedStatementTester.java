@@ -22,12 +22,16 @@ public abstract class BasePreparedStatementTester
   protected void setPreparedStatement(PreparedStatement pstmt) { _pstmt = pstmt; }
 
   protected void clean()
-    throws SQLException
-  {
-    try { getPreparedStatement().executeUpdate(_sSQL_CLEAN); }
-    catch(SQLException se) { getPreparedStatement().getConnection().rollback(); }
-  } /* clean */
-  
+      throws SQLException
+    {
+      try 
+      { 
+        getPreparedStatement().executeUpdate(_sSQL_CLEAN);
+        getPreparedStatement().getConnection().commit();
+      }
+      catch(SQLException se) { getPreparedStatement().getConnection().rollback(); }
+    } /* clean */
+    
   private String getCallingMethod(int iDepth)
   {
     String sCallingMethod = null;
@@ -107,10 +111,14 @@ public abstract class BasePreparedStatementTester
     {
       clean();
       _pstmt.executeUpdate(_sSQL_DDL); 
-      clean();
     }
     catch(SQLTimeoutException ste) { fail(EU.getExceptionMessage(ste)); }
     catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    finally 
+    { 
+      try { clean(); }
+      catch(SQLException se1) { fail(EU.getExceptionMessage(se1)); }
+    }
   } /* testExecuteUpdate */
   
   @Test
@@ -121,11 +129,15 @@ public abstract class BasePreparedStatementTester
     {
       clean();
       _pstmt.executeUpdate(_sSQL_DDL, Statement.NO_GENERATED_KEYS);
-      clean();
     }
     catch(SQLFeatureNotSupportedException sfnse) { System.out.println(EU.getExceptionMessage(sfnse)); }
     catch(SQLTimeoutException ste) { fail(EU.getExceptionMessage(ste)); }
     catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    finally 
+    { 
+      try { clean(); }
+      catch(SQLException se1) { fail(EU.getExceptionMessage(se1)); }
+    }
   } /* testExecuteUpdate_String_int */
   
   @Test
@@ -136,11 +148,15 @@ public abstract class BasePreparedStatementTester
     {
       clean();
       _pstmt.executeUpdate(_sSQL_DDL, new int[] {1,2});
-      clean();
     }
     catch(SQLFeatureNotSupportedException sfnse) { System.out.println(EU.getExceptionMessage(sfnse)); }
     catch(SQLTimeoutException ste) { fail(EU.getExceptionMessage(ste)); }
     catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    finally 
+    { 
+      try { clean(); }
+      catch(SQLException se1) { fail(EU.getExceptionMessage(se1)); }
+    }
   } /* testExecuteUpdate_String_AInt */
   
   @Test
@@ -151,11 +167,15 @@ public abstract class BasePreparedStatementTester
     {
       clean();
       _pstmt.executeUpdate(_sSQL_DDL, new String[]{"COL_A", "COL_B"});
-      clean();
     }
     catch(SQLFeatureNotSupportedException sfnse) { System.out.println(EU.getExceptionMessage(sfnse)); }
     catch(SQLTimeoutException ste) { fail(EU.getExceptionMessage(ste)); }
     catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    finally 
+    { 
+      try { clean(); }
+      catch(SQLException se1) { fail(EU.getExceptionMessage(se1)); }
+    }
   } /* testExecuteUpdate */
   
   @Test
