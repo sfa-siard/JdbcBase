@@ -85,7 +85,8 @@ public abstract class BaseStatementTester
     try 
     { 
       clean();
-      _stmt.executeUpdate(_sSQL_DDL); 
+      _stmt.executeUpdate(_sSQL_DDL);
+      clean();
     }
     catch(SQLTimeoutException ste) { fail(EU.getExceptionMessage(ste)); }
     catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
@@ -98,7 +99,8 @@ public abstract class BaseStatementTester
     try 
     {
       clean();
-      _stmt.executeUpdate(_sSQL_DDL, Statement.NO_GENERATED_KEYS); 
+      _stmt.executeUpdate(_sSQL_DDL, Statement.NO_GENERATED_KEYS);
+      clean();
     }
     catch(SQLFeatureNotSupportedException sfnse) { System.out.println(EU.getExceptionMessage(sfnse)); }
     catch(SQLTimeoutException ste) { fail(EU.getExceptionMessage(ste)); }
@@ -112,7 +114,8 @@ public abstract class BaseStatementTester
     try 
     {
       clean();
-      _stmt.executeUpdate(_sSQL_DDL, new int[] {1,2}); 
+      _stmt.executeUpdate(_sSQL_DDL, new int[] {1,2});
+      clean();
     }
     catch(SQLFeatureNotSupportedException sfnse) { System.out.println(EU.getExceptionMessage(sfnse)); }
     catch(SQLTimeoutException ste) { fail(EU.getExceptionMessage(ste)); }
@@ -126,7 +129,8 @@ public abstract class BaseStatementTester
     try 
     {
       clean();
-      _stmt.executeUpdate(_sSQL_DDL, new String[]{"COL_A", "COL_B"}); 
+      _stmt.executeUpdate(_sSQL_DDL, new String[]{"COL_A", "COL_B"});
+      clean();
     }
     catch(SQLFeatureNotSupportedException sfnse) { System.out.println(EU.getExceptionMessage(sfnse)); }
     catch(SQLTimeoutException ste) { fail(EU.getExceptionMessage(ste)); }
