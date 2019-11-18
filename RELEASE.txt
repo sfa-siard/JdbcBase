@@ -1,6 +1,9 @@
 Release Notes for JdbcBase 2.1
 ==============================
 
+2.1.51
+Postgres integration
+
 2.1.40
 More flexible wasNull-Handling.
 
