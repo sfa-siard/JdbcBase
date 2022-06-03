@@ -247,5 +247,31 @@ Created    : 09.05.2016, Hartwig Thomas
     <copy file="../EnterUtilities/dist/enterutils.jar" todir="${dirlib}" failonerror="false" overwrite="true"/>
     <copy file="../SqlParser/dist/sqlparser.jar" todir="${dirlib}" failonerror="false" overwrite="true"/>
   </target>
+
+  <!-- create the ZIP file with binaries for Windows and LINUX -->
+  <target name="release" depends="jar">
+    <echo message="${ant.project.name}: zip"/>
+    <zip zipfile="${dirdist}/${ant.project.name}-${version}.${revision}.zip">
+      <zipfileset dir="${dirdist}" prefix="${ant.project.name}/${dirlib}">
+        <include name="*.jar"/>
+        <exclude name="*-test.jar"/>
+      </zipfileset>
+      <zipfileset dir="${dirlib}" prefix="${ant.project.name}/${dirlib}">
+        <exclude name="*-test.jar"/>
+        <exclude name="${jarhamcrest}"/>
+        <exclude name="${jarjunit4}"/>
+      </zipfileset>
+      <zipfileset dir="${dirdoc}" prefix="${ant.project.name}/${dirdoc}">
+        <include name="**/*.*"/>
+        <exclude name="developer/**/*.*"/>
+      </zipfileset>
+      <zipfileset dir="${diretc}" prefix="${ant.project.name}/${diretc}">
+        <exclude name="debug.properties"/>
+      </zipfileset>
+      <zipfileset dir="." prefix="${ant.project.name}">
+        <include name="*.txt"/>
+      </zipfileset>
+    </zip>
+  </target>
   
 </project>
