@@ -209,32 +209,6 @@ Created    : 09.05.2016, Hartwig Thomas
     </jar>
   </target>
   
-  <!-- create the ZIP file with binaries for Windows and LINUX -->
-  <target name="zip" depends="jar,jartest">
-    <echo message="${ant.project.name}: zip"/>
-    <zip zipfile="${dirdist}/${ant.project.name}-${version}.${revision}.zip">
-      <zipfileset dir="${dirdist}" prefix="${ant.project.name}/${dirlib}">
-        <include name="*.jar"/>
-        <exclude name="*-test.jar"/>
-      </zipfileset>
-      <zipfileset dir="${dirlib}" prefix="${ant.project.name}/${dirlib}">
-        <exclude name="*-test.jar"/>
-      	<exclude name="${jarhamcrest}"/>
-      	<exclude name="${jarjunit4}"/>
-      </zipfileset>
-      <zipfileset dir="${dirdoc}" prefix="${ant.project.name}/${dirdoc}">
-        <include name="**/*.*"/>
-        <exclude name="developer/**/*.*"/>
-      </zipfileset>
-      <zipfileset dir="${diretc}" prefix="${ant.project.name}/${diretc}">
-        <exclude name="debug.properties"/>
-      </zipfileset>
-      <zipfileset dir="." prefix="${ant.project.name}">
-        <include name="*.txt"/>
-      </zipfileset>
-    </zip>
-  </target>
-  
   <!-- deploy to file system -->
   <target name="deploy" if="dirdeploy">
     <echo message="${ant.project.name}: deploy"/>
@@ -249,7 +223,7 @@ Created    : 09.05.2016, Hartwig Thomas
   </target>
 
   <!-- create the ZIP file with binaries for Windows and LINUX -->
-  <target name="release" depends="jar">
+  <target name="release" depends="jar, jartest">
     <echo message="${ant.project.name}: zip"/>
     <zip zipfile="${dirdist}/${ant.project.name}-${version}.${revision}.zip">
       <zipfileset dir="${dirdist}" prefix="${ant.project.name}/${dirlib}">
