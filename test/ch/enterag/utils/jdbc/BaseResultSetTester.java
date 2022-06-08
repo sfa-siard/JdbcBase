@@ -1,6 +1,7 @@
 package ch.enterag.utils.jdbc;
 
 import java.io.*;
+import java.net.MalformedURLException;
 import java.util.*;
 import java.math.*;
 import java.sql.*;
@@ -1135,14 +1136,12 @@ public abstract class BaseResultSetTester
     }
     catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
   } /* testUpdateRowId */
-  
+
   @Test
-  public void testGetUrl()
-  {
+  public void testGetUrl() throws MalformedURLException, SQLException {
     enter();
-    try { _rs.getURL("COL"); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
-  } /* testGetUrl */
+    _rs.getURL("COL");
+  }
   
   @Test
   public void testInsertRow() throws SQLException
