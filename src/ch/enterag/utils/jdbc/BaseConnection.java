@@ -418,6 +418,8 @@ public abstract class BaseConnection
     return _connWrapped.createSQLXML();
   } /* createSQLXML */
 
+  public Object createDatalinkObject() throws SQLException { return null; }
+
   /*------------------------------------------------------------------*/
   /** {@inheritDoc} */
   @Override
