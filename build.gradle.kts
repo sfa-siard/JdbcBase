@@ -25,4 +25,12 @@ repositories {
 dependencies {
     implementation(fileTree(mapOf("dir" to "lib", "include" to listOf("*.jar"))))
     implementation("ch.admin.bar:enterutilities:v2.2.3")
+    testImplementation("junit:junit:4.13.1")
+    testImplementation("org.junit.jupiter:junit-jupiter-api:5.10.1")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.10.1")
 }
+
+tasks.test {
+    useJUnitPlatform()
+}
+
