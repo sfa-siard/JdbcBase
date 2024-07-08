@@ -1,5 +1,5 @@
 # JdbcBase - SIARD JDBC-Wrapper Base
-This package contains base implementations of JDBC interfaces wrapping an existing JDBC driver for SIARD.
+This package contains base implementations of JDBC interfaces wrapping an existing JDBC driver for SIARD. The tests in this project are abstract and must be implemented by inheriting classes, for example in JdbcMySql.
 
 ## Prerequisites
 For building the binaries, Java JDK (1.8 or higher) must be installed. 
