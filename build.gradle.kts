@@ -35,4 +35,11 @@ tasks.test {
     useJUnitPlatform()
 }
 
+tasks.register<Jar>("testJar") {
+    archiveFileName.set("${project.name}-test-$version.jar")
+    from(project.the<SourceSetContainer>()["test"].output)
+}
+
+tasks.getByName("assemble").dependsOn("testJar")
+
 
