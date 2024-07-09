@@ -9,6 +9,12 @@ For building the binaries, Java JDK (1.8 or higher) must be installed.
 ./gradlew clean build
 ```
 
+### Create a release
+This creates a new tag and pushes the tag to main branch.
+```shell
+./gradlew release
+```
+
 ## Documentation
 - [User's Manual](./doc/manual/user/index.html) 
 - [Developer's Manual](./doc/manual/user/index.html) 
