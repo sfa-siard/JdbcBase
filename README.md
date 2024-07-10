@@ -1,29 +1,25 @@
-# JdbcBase - SIARD 2.2 JDBC-Wrapper Base
+# JdbcBase - SIARD JDBC-Wrapper Base
+This package contains base implementations of JDBC interfaces wrapping an existing JDBC driver for SIARD. The tests in this project are abstract and must be implemented by inheriting classes, for example in JdbcMySql.
 
-This package contains base implementations of JDBC interfaces wrapping
-an existing JDBC driver for SIARD 2.2.
+## Prerequisites
+For building the binaries, Java JDK (1.8 or higher) must be installed. 
 
-
-## Getting started (for devs)
-
-There are no tests in this project.
-
-For building the binaries, Java JDK 8 or higher and Ant must
-have been installed. Adjust `build.properties` to your needs.
-
-Build the project
-
+### Build the project
 ```shell
-ant build
+./gradlew clean build
 ```
 
-JdbcBase 2.1 has been built and tested with JAVA JDK 1.8, 9, and 10.
+### Create a release
+This creates a new tag and pushes the tag to main branch.
+```shell
+./gradlew release
+```
 
 ## Documentation
+- [User's Manual](./doc/manual/user/index.html) 
+- [Developer's Manual](./doc/manual/user/index.html) 
 
-[./doc/manual/user/index.html](./doc/manual/user/index.html) contains the manual for using the binaries.
-[./doc/manual/developer/index.html](./doc/manual/user/index.html) is the manual for developers wishing
-build the binaries or work on the code.  
+## Declaration
+Contributions to the codebase have been made with the support of Codeium. Codeium is AI-powered code completion tool, that is trained exclusively on natural language and source code data with [permissive licenses](https://codeium.com/blog/copilot-trains-on-gpl-codeium-does-not ). 
 
-More information about the build process can be found in
-[./doc/manual/developer/build.html](./doc/manual/developer/build.html)
+

@@ -1,21 +1,25 @@
 # ignore all build directories
-/build/**
+/build/
+
 # ignore javadoc folder
 /doc/javadoc/**
+
 # tmp contains temporary files
 /tmp/**
+
 # dist contains the binary build results
 /dist/**
 target/
+
 # sometimes junit4 produces temporary files that we do not want to check in
 /junit*.*
-/build/
 
-# intellij idea project files
+# ignore IDE and tool-specific files
 .idea/
 *.iml
 out/
-
-# asdf tools configuration
 .tool-versions
+
+# ignore Gradle project-specific cache directory
+.gradle
 
