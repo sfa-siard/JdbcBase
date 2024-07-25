@@ -2,7 +2,6 @@ package ch.enterag.utils.jdbc;
 
 import java.sql.*;
 import javax.xml.transform.stream.*;
-import static org.junit.Assert.*;
 import org.junit.*;
 import ch.enterag.utils.*;
 
@@ -45,7 +44,7 @@ public abstract class BaseSqlXmlTester
       if (_sqlxml != null)
         _sqlxml.free();
     }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* tearDown */
   
   /*--------------------------------------------------------------------
@@ -56,7 +55,7 @@ public abstract class BaseSqlXmlTester
   {
     enter();
     try { _sqlxml.getBinaryStream(); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testGetBinaryStream */
 
   @Test
@@ -64,7 +63,7 @@ public abstract class BaseSqlXmlTester
   {
     enter();
     try { _sqlxml.setBinaryStream(); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testSetBinaryStream */
 
   @Test
@@ -72,7 +71,7 @@ public abstract class BaseSqlXmlTester
   {
     enter();
     try { _sqlxml.getCharacterStream(); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testGetCharacterStream */
 
   @Test
@@ -80,7 +79,7 @@ public abstract class BaseSqlXmlTester
   {
     enter();
     try { _sqlxml.setCharacterStream(); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testSetCharacterStream */
 
   @Test
@@ -88,7 +87,7 @@ public abstract class BaseSqlXmlTester
   {
     enter();
     try { System.out.println(_sqlxml.getString()); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testGetString */
 
   @Test
@@ -96,7 +95,7 @@ public abstract class BaseSqlXmlTester
   {
     enter();
     try { _sqlxml.setString("<a>some XML</a>"); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testSetString */
 
   @Test
@@ -105,7 +104,7 @@ public abstract class BaseSqlXmlTester
     enter();
     try { _sqlxml.getSource(StreamSource.class); }
     catch(SQLFeatureNotSupportedException sfnse) { printExceptionMessage(sfnse); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testGetSource */
 
   @Test
@@ -114,7 +113,7 @@ public abstract class BaseSqlXmlTester
     enter();
     try { _sqlxml.setResult(StreamResult.class); }
     catch(SQLFeatureNotSupportedException sfnse) { printExceptionMessage(sfnse); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testSetResult */
 
   @Test
@@ -122,7 +121,7 @@ public abstract class BaseSqlXmlTester
   {
     enter();
     try { _sqlxml.free(); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testSetResult */
 
 } /* BaseSqlXmlTester */

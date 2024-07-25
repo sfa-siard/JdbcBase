@@ -2,7 +2,6 @@ package ch.enterag.utils.jdbc;
 
 import java.sql.*;
 import java.util.*;
-import static org.junit.Assert.fail;
 import org.junit.*;
 
 import ch.enterag.utils.*;
@@ -80,7 +79,7 @@ public abstract class BaseResultSetMetaDataTester
       rs.close();
     }
     else 
-      fail("Invalid meta data result set!");
+      Assert.fail("Invalid meta data result set!");
   }
   
   private String getCallingMethod(int iDepth)
@@ -119,7 +118,7 @@ public abstract class BaseResultSetMetaDataTester
         conn.close();
       }
     }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* tearDown */
   
   /*--------------------------------------------------------------------
@@ -130,7 +129,7 @@ public abstract class BaseResultSetMetaDataTester
   {
     enter();
     try { println(String.valueOf(_rsmd.getColumnCount())); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testGetColumnCount */
 
   @Test
@@ -144,7 +143,7 @@ public abstract class BaseResultSetMetaDataTester
         listCatalog.add(_rsmd.getCatalogName(i));
       println(listCatalog);
     }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testGetCatalogName */
 
   @Test
@@ -158,7 +157,7 @@ public abstract class BaseResultSetMetaDataTester
         listSchema.add(_rsmd.getSchemaName(i));
       println(listSchema);
     }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testGetSchemaName */
 
   @Test
@@ -172,7 +171,7 @@ public abstract class BaseResultSetMetaDataTester
         listTable.add(_rsmd.getTableName(i));
       println(listTable);
     }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testGetTableName */
 
   @Test
@@ -186,7 +185,7 @@ public abstract class BaseResultSetMetaDataTester
         listColumn.add(_rsmd.getColumnName(i));
       println(listColumn);
     }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testGetColumnName */
 
   @Test
@@ -200,7 +199,7 @@ public abstract class BaseResultSetMetaDataTester
         listColumnLabel.add(_rsmd.getColumnLabel(i));
       println(listColumnLabel);
     }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testGetColumnLabel */
 
   @Test
@@ -214,7 +213,7 @@ public abstract class BaseResultSetMetaDataTester
         listColumnClassName.add(_rsmd.getColumnLabel(i));
       println(listColumnClassName);
     }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testGetColumnClassName */
 
   @Test
@@ -228,7 +227,7 @@ public abstract class BaseResultSetMetaDataTester
         listColumnType.add(SqlTypes.getTypeName(_rsmd.getColumnType(i)));
       println(listColumnType);
     }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testGetColumnType */
 
   @Test
@@ -242,7 +241,7 @@ public abstract class BaseResultSetMetaDataTester
         listColumnTypeName.add(_rsmd.getColumnTypeName(i));
       println(listColumnTypeName);
     }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testGetColumnTypeName */
 
   @Test
@@ -256,7 +255,7 @@ public abstract class BaseResultSetMetaDataTester
         listColumnDisplaySize.add(String.valueOf(_rsmd.getColumnDisplaySize(i)));
       println(listColumnDisplaySize);
     }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testGetColumnDisplaySize */
 
   @Test
@@ -270,7 +269,7 @@ public abstract class BaseResultSetMetaDataTester
         listPrecision.add(String.valueOf(_rsmd.getPrecision(i)));
       println(listPrecision);
     }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testGetPrecision */
 
   @Test
@@ -284,7 +283,7 @@ public abstract class BaseResultSetMetaDataTester
         listScale.add(String.valueOf(_rsmd.getScale(i)));
       println(listScale);
     }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testGetPrecision */
 
   @Test
@@ -298,7 +297,7 @@ public abstract class BaseResultSetMetaDataTester
         listIsAutoIncrement.add(String.valueOf(_rsmd.isAutoIncrement(i)));
       println(listIsAutoIncrement);
     }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testGetIsAutoIncrement */
 
   @Test
@@ -312,7 +311,7 @@ public abstract class BaseResultSetMetaDataTester
         listIsCaseSensitive.add(String.valueOf(_rsmd.isCaseSensitive(i)));
       println(listIsCaseSensitive);
     }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testGetIsCaseSensitive */
 
   @Test
@@ -326,7 +325,7 @@ public abstract class BaseResultSetMetaDataTester
         listIsSearchable.add(String.valueOf(_rsmd.isSearchable(i)));
       println(listIsSearchable);
     }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testGetIsSearchable */
 
   @Test
@@ -340,7 +339,7 @@ public abstract class BaseResultSetMetaDataTester
         listIsCurrency.add(String.valueOf(_rsmd.isCurrency(i)));
       println(listIsCurrency);
     }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testGetIsCurrency */
 
   @Test
@@ -354,7 +353,7 @@ public abstract class BaseResultSetMetaDataTester
         listIsNullable.add(String.valueOf(_rsmd.isNullable(i)));
       println(listIsNullable);
     }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testGetIsNullable */
 
   @Test
@@ -368,7 +367,7 @@ public abstract class BaseResultSetMetaDataTester
         listIsSigned.add(String.valueOf(_rsmd.isSigned(i)));
       println(listIsSigned);
     }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testGetIsSigned */
 
   @Test
@@ -382,7 +381,7 @@ public abstract class BaseResultSetMetaDataTester
         listIsReadOnly.add(String.valueOf(_rsmd.isReadOnly(i)));
       println(listIsReadOnly);
     }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testGetIsReadOnly */
 
   @Test
@@ -396,7 +395,7 @@ public abstract class BaseResultSetMetaDataTester
         listIsWritable.add(String.valueOf(_rsmd.isWritable(i)));
       println(listIsWritable);
     }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testGetIsWritable */
 
   @Test
@@ -410,7 +409,7 @@ public abstract class BaseResultSetMetaDataTester
         listIsDefinitelyWritable.add(String.valueOf(_rsmd.isDefinitelyWritable(i)));
       println(listIsDefinitelyWritable);
     }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testGetIsDefinitelyWritable */
 
   @Test
@@ -487,8 +486,8 @@ public abstract class BaseResultSetMetaDataTester
         println(list);
       }
     }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
-    catch(Exception e) { fail(EU.getExceptionMessage(e)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
+    catch(Exception e) { Assert.fail(EU.getExceptionMessage(e)); }
   } /* testAll */
   
 }  /* class BaseResultSetMetaDataTester */

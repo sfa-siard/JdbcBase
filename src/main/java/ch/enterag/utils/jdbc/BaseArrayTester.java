@@ -1,6 +1,5 @@
 package ch.enterag.utils.jdbc;
 
-import static org.junit.Assert.*;
 import org.junit.*;
 import java.sql.*;
 import java.util.*;
@@ -50,7 +49,7 @@ public abstract class BaseArrayTester
       rs.close();
     }
     else 
-      fail("Invalid meta data result set!");
+      Assert.fail("Invalid meta data result set!");
   }
   
   private String getCallingMethod(int iDepth)
@@ -82,7 +81,7 @@ public abstract class BaseArrayTester
       if (_array != null)
         _array.free();
     }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* tearDown */
   
   /*--------------------------------------------------------------------
@@ -94,7 +93,7 @@ public abstract class BaseArrayTester
     enter();
     try { System.out.println(_array.getBaseTypeName()); }
     catch(SQLFeatureNotSupportedException sfnse) { printExceptionMessage(sfnse); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testGetBaseTypeName */
 
   @Test
@@ -103,7 +102,7 @@ public abstract class BaseArrayTester
     enter();
     try { System.out.println(String.valueOf(_array.getBaseType())); }
     catch(SQLFeatureNotSupportedException sfnse) { printExceptionMessage(sfnse); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testGetBaseType */
 
   @Test
@@ -112,7 +111,7 @@ public abstract class BaseArrayTester
     enter();
     try { _array.getArray(); }
     catch(SQLFeatureNotSupportedException sfnse) { printExceptionMessage(sfnse); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testGetArray */
 
   @Test
@@ -121,7 +120,7 @@ public abstract class BaseArrayTester
     enter();
     try { _array.getArray(1l,1); }
     catch(SQLFeatureNotSupportedException sfnse) { printExceptionMessage(sfnse); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testGetArray_Long_Int */
 
   @Test
@@ -130,7 +129,7 @@ public abstract class BaseArrayTester
     enter();
     try { print(_array.getResultSet()); }
     catch(SQLFeatureNotSupportedException sfnse) { printExceptionMessage(sfnse); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testGetResultSet */
 
   @Test
@@ -139,7 +138,7 @@ public abstract class BaseArrayTester
     enter();
     try { print(_array.getResultSet(1l,2)); }
     catch(SQLFeatureNotSupportedException sfnse) { printExceptionMessage(sfnse); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testGetResultSet_Long_int */
 
 } /* BaseArrayTester */

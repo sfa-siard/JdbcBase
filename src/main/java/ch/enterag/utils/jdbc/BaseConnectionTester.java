@@ -2,7 +2,6 @@ package ch.enterag.utils.jdbc;
 
 import java.sql.*;
 import java.util.*;
-import static org.junit.Assert.*;
 import org.junit.*;
 import ch.enterag.utils.*;
 
@@ -41,7 +40,7 @@ public abstract class BaseConnectionTester
         _conn.close();
       }
     }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* tearDown */
   
   /*--------------------------------------------------------------------
@@ -52,7 +51,7 @@ public abstract class BaseConnectionTester
   {
     enter();
     try { _conn.createStatement(); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testCreateStatement */
   
   @Test
@@ -60,7 +59,7 @@ public abstract class BaseConnectionTester
   {
     enter();
     try { _conn.prepareStatement(_sSQL); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testPrepareStatement */
   
   @Test
@@ -68,7 +67,7 @@ public abstract class BaseConnectionTester
   {
     enter();
     try { _conn.prepareCall(_sSQL); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testPrepareCall*/
   
   @Test
@@ -76,14 +75,14 @@ public abstract class BaseConnectionTester
   {
     enter();
     try { _conn.nativeSQL(_sSQL); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testNativeSql */
   @Test
   public void testSetAutoCommit()
   {
     enter();
     try { _conn.setAutoCommit(false); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testSetAutoCommit */
   
   @Test
@@ -91,7 +90,7 @@ public abstract class BaseConnectionTester
   {
     enter();
     try { _conn.getAutoCommit(); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testGetAutoCommit */
   
   @Test
@@ -99,7 +98,7 @@ public abstract class BaseConnectionTester
   {
     enter();
     try { _conn.commit(); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testCommit */
   
   @Test
@@ -107,7 +106,7 @@ public abstract class BaseConnectionTester
   {
     enter();
     try { _conn.rollback(); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testRollback */
   
   @Test
@@ -115,15 +114,15 @@ public abstract class BaseConnectionTester
   {
     enter();
     try { _conn.close(); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testClose */
   
   @Test
   public void testIsClosed()
   {
     enter();
-    try { assertSame("Connection is closed!", false, _conn.isClosed()); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    try { Assert.assertSame("Connection is closed!", false, _conn.isClosed()); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testIsClosed */
   
   @Test
@@ -131,7 +130,7 @@ public abstract class BaseConnectionTester
   {
     enter();
     try { _conn.getMetaData(); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testGetMetadata */
   
   @Test
@@ -139,7 +138,7 @@ public abstract class BaseConnectionTester
   {
     enter();
     try { _conn.setReadOnly(false); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testSetReadOnly */
   
   @Test
@@ -147,7 +146,7 @@ public abstract class BaseConnectionTester
   {
     enter();
     try { _conn.isReadOnly(); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testIsReadOnly */
   
   @Test
@@ -155,7 +154,7 @@ public abstract class BaseConnectionTester
   {
     enter();
     try { _conn.setCatalog("TEST_CATALOG"); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testSetCatalog */
   
   @Test
@@ -163,7 +162,7 @@ public abstract class BaseConnectionTester
   {
     enter();
     try { _conn.getCatalog(); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testGetCatalog */
   
   @Test
@@ -171,7 +170,7 @@ public abstract class BaseConnectionTester
   {
     enter();
     try { _conn.setTransactionIsolation(Connection.TRANSACTION_READ_COMMITTED); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testSetTransactionIsolation */
   
   @Test
@@ -179,7 +178,7 @@ public abstract class BaseConnectionTester
   {
     enter();
     try { _conn.getTransactionIsolation(); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testGetTransactionIsolation */
   
   @Test
@@ -187,7 +186,7 @@ public abstract class BaseConnectionTester
   {
     enter();
     try { _conn.getWarnings(); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testGetWarnings */
   
   @Test
@@ -195,7 +194,7 @@ public abstract class BaseConnectionTester
   {
     enter();
     try { _conn.clearWarnings(); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testClearWarnings */
   
   @Test
@@ -209,7 +208,7 @@ public abstract class BaseConnectionTester
         ResultSet.CONCUR_READ_ONLY);
     }
     catch(SQLFeatureNotSupportedException sfnse) { System.out.println(EU.getExceptionMessage(sfnse)); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testCreateStatement_Int_Int */
   
   @Test
@@ -223,7 +222,7 @@ public abstract class BaseConnectionTester
         ResultSet.CONCUR_READ_ONLY);
     }
     catch(SQLFeatureNotSupportedException sfnse) { System.out.println(EU.getExceptionMessage(sfnse)); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testPrepareStatement_String_Int_Int */
   
   @Test
@@ -237,7 +236,7 @@ public abstract class BaseConnectionTester
         ResultSet.CONCUR_READ_ONLY);
     }
     catch(SQLFeatureNotSupportedException sfnse) { System.out.println(EU.getExceptionMessage(sfnse)); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testPrepareCall_String_Int_Int */
   
   @Test
@@ -246,7 +245,7 @@ public abstract class BaseConnectionTester
     enter();
     try { _conn.getTypeMap(); }
     catch(SQLFeatureNotSupportedException sfnse) { System.out.println(EU.getExceptionMessage(sfnse)); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testGetTypeMap */
   
   @Test
@@ -255,7 +254,7 @@ public abstract class BaseConnectionTester
     enter();
     try { _conn.setTypeMap(new HashMap<String, Class<?>>()); }
     catch(SQLFeatureNotSupportedException sfnse) { System.out.println(EU.getExceptionMessage(sfnse)); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testSetTypeMap */
   
   @Test
@@ -264,7 +263,7 @@ public abstract class BaseConnectionTester
     enter();
     try { _conn.setHoldability(ResultSet.CLOSE_CURSORS_AT_COMMIT); }
     catch(SQLFeatureNotSupportedException sfnse) { System.out.println(EU.getExceptionMessage(sfnse)); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testSetHoldability */
   
   @Test
@@ -273,7 +272,7 @@ public abstract class BaseConnectionTester
     enter();
     try { _conn.getHoldability(); }
     catch(SQLFeatureNotSupportedException sfnse) { System.out.println(EU.getExceptionMessage(sfnse)); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testGetHoldability */
   
   @Test
@@ -282,7 +281,7 @@ public abstract class BaseConnectionTester
     enter();
     try { _conn.setSavepoint(); }
     catch(SQLFeatureNotSupportedException sfnse) { System.out.println(EU.getExceptionMessage(sfnse)); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testSetSavepoint */
   
   @Test
@@ -291,7 +290,7 @@ public abstract class BaseConnectionTester
     enter();
     try { _conn.setSavepoint("TEST_SAVEPOINT"); }
     catch(SQLFeatureNotSupportedException sfnse) { System.out.println(EU.getExceptionMessage(sfnse)); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testSetSavepoint_String */
   
   @Test
@@ -304,7 +303,7 @@ public abstract class BaseConnectionTester
       _conn.rollback(sp);
     }
     catch(SQLFeatureNotSupportedException sfnse) { System.out.println(EU.getExceptionMessage(sfnse)); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testRollback */
   
   @Test
@@ -317,7 +316,7 @@ public abstract class BaseConnectionTester
       _conn.releaseSavepoint(sp);
     }
     catch(SQLFeatureNotSupportedException sfnse) { System.out.println(EU.getExceptionMessage(sfnse)); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testReleaseSavePoint */
   
   @Test
@@ -332,7 +331,7 @@ public abstract class BaseConnectionTester
         ResultSet.CLOSE_CURSORS_AT_COMMIT);
     }
     catch(SQLFeatureNotSupportedException sfnse) { System.out.println(EU.getExceptionMessage(sfnse)); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testCreateStatement_Int_Int_Int */
   
   @Test
@@ -347,7 +346,7 @@ public abstract class BaseConnectionTester
         ResultSet.CLOSE_CURSORS_AT_COMMIT);
     }
     catch(SQLFeatureNotSupportedException sfnse) { System.out.println(EU.getExceptionMessage(sfnse)); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testPrepareStatement_String_Int_Int_Int */
   
   @Test
@@ -362,7 +361,7 @@ public abstract class BaseConnectionTester
         ResultSet.CLOSE_CURSORS_AT_COMMIT);
     }
     catch(SQLFeatureNotSupportedException sfnse) { System.out.println(EU.getExceptionMessage(sfnse)); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testPrepareCall_String_Int_Int_Int */
   
   @Test
@@ -371,7 +370,7 @@ public abstract class BaseConnectionTester
     enter();
     try { _conn.prepareStatement(_sSQL, Statement.NO_GENERATED_KEYS); }
     catch(SQLFeatureNotSupportedException sfnse) { System.out.println(EU.getExceptionMessage(sfnse)); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testPrepareStatement_String_Int */
   
   @Test
@@ -380,7 +379,7 @@ public abstract class BaseConnectionTester
     enter();
     try { _conn.prepareStatement(_sSQL, new int[] {1,2}); }
     catch(SQLFeatureNotSupportedException sfnse) { System.out.println(EU.getExceptionMessage(sfnse)); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testPrepareStatement_String_AInt */
   
   @Test
@@ -389,7 +388,7 @@ public abstract class BaseConnectionTester
     enter();
     try { _conn.prepareStatement(_sSQL,new String[]{"COL_A", "COL_B"}); }
     catch(SQLFeatureNotSupportedException sfnse) { System.out.println(EU.getExceptionMessage(sfnse)); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testPrepareStatement_String_AString */
   
   @Test
@@ -399,11 +398,11 @@ public abstract class BaseConnectionTester
     try
     {
       Clob clob = _conn.createClob();
-      assertEquals(0,clob.length());
+      Assert.assertEquals(0,clob.length());
       clob.free();
     }
     catch(SQLFeatureNotSupportedException sfnse) { System.out.println(EU.getExceptionMessage(sfnse)); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testCreateClob */
   
   @Test
@@ -413,11 +412,11 @@ public abstract class BaseConnectionTester
     try
     {
       Blob blob = _conn.createBlob();
-      assertEquals(0, blob.length());
+      Assert.assertEquals(0, blob.length());
       blob.free();
     }
     catch(SQLFeatureNotSupportedException sfnse) { System.out.println(EU.getExceptionMessage(sfnse)); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testCreateBlob */
   
   @Test
@@ -427,11 +426,11 @@ public abstract class BaseConnectionTester
     try
     { 
       NClob nclob = _conn.createNClob(); 
-      assertEquals(0, nclob.length());
+      Assert.assertEquals(0, nclob.length());
       nclob.free();
     }
     catch(SQLFeatureNotSupportedException sfnse) { System.out.println(EU.getExceptionMessage(sfnse)); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testCreateNClob */
   
   @Test
@@ -444,7 +443,7 @@ public abstract class BaseConnectionTester
       sqlxml.free();
     }
     catch(SQLFeatureNotSupportedException sfnse) { System.out.println(EU.getExceptionMessage(sfnse)); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testCreateSqlXml */
 
   @Test
@@ -454,9 +453,9 @@ public abstract class BaseConnectionTester
     try 
     { 
       int iTimeoutSec = 30;
-      assertSame("Connection is not valid!",true,_conn.isValid(iTimeoutSec)); 
+      Assert.assertSame("Connection is not valid!",true,_conn.isValid(iTimeoutSec));
     }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testValid */
 
   @Test
@@ -485,7 +484,7 @@ public abstract class BaseConnectionTester
     enter();
     try { _conn.getClientInfo("TEST_NAME"); }
     catch(SQLClientInfoException scie) { System.out.println(EU.getExceptionMessage(scie)); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testGetClientInfo_String */
   
   @Test
@@ -494,7 +493,7 @@ public abstract class BaseConnectionTester
     enter();
     try { _conn.getClientInfo(); }
     catch(SQLClientInfoException scie) { System.out.println(EU.getExceptionMessage(scie)); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testGetClientInfo */
 
   @Test
@@ -507,7 +506,7 @@ public abstract class BaseConnectionTester
       array.free();
     }
     catch(SQLFeatureNotSupportedException sfnse) { System.out.println(EU.getExceptionMessage(sfnse)); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* createArrayOf */
   
   @Test
@@ -516,7 +515,7 @@ public abstract class BaseConnectionTester
     enter();
     try { _conn.createStruct("TEST_SCHEMA.TEST_STRUCT_TYPE", new String[] {"a", "b", "c"}); }
     catch(SQLFeatureNotSupportedException sfnse) { System.out.println(EU.getExceptionMessage(sfnse)); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testCreateStruct */
   
   @Test
@@ -525,7 +524,7 @@ public abstract class BaseConnectionTester
     enter();
     try { _conn.setSchema("TEST_SCHEMA"); }
     catch(SQLFeatureNotSupportedException sfnse) { System.out.println(EU.getExceptionMessage(sfnse)); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testSetSchema */
   
   @Test
@@ -534,7 +533,7 @@ public abstract class BaseConnectionTester
     enter();
     try { _conn.getSchema(); }
     catch(SQLFeatureNotSupportedException sfnse) { System.out.println(EU.getExceptionMessage(sfnse)); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testGetSchema */
 
   @Test
@@ -544,7 +543,7 @@ public abstract class BaseConnectionTester
     try { _conn.abort(null); }
     catch(SQLFeatureNotSupportedException sfnse) { System.out.println(EU.getExceptionMessage(sfnse)); }
     catch(SQLException se) { System.out.println(EU.getExceptionMessage(se)); }
-    catch(SecurityException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SecurityException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testAbort */
   
   @Test
@@ -557,8 +556,8 @@ public abstract class BaseConnectionTester
       _conn.setNetworkTimeout(null, iTimeoutMs);
     }
     catch(SQLFeatureNotSupportedException sfnse) { System.out.println(EU.getExceptionMessage(sfnse)); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
-    catch(SecurityException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
+    catch(SecurityException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testSetNetworkTimeout */
   
   @Test
@@ -571,7 +570,7 @@ public abstract class BaseConnectionTester
       System.out.println("Timeout [ms]: "+String.valueOf(iTimeoutMs));
     }
     catch(SQLFeatureNotSupportedException sfnse) { System.out.println(EU.getExceptionMessage(sfnse)); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testGetNetworkTimeout */
 
 } /* BaseConnectionTester */

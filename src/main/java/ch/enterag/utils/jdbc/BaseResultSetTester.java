@@ -5,7 +5,6 @@ import java.net.MalformedURLException;
 import java.util.*;
 import java.math.*;
 import java.sql.*;
-import static org.junit.Assert.*;
 import org.junit.*;
 import ch.enterag.utils.*;
 import ch.enterag.sqlparser.*;
@@ -60,7 +59,7 @@ public abstract class BaseResultSetTester
         conn.close();
       }
     }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* tearDown */
   
   /*--------------------------------------------------------------------
@@ -72,7 +71,7 @@ public abstract class BaseResultSetTester
     enter();
     try { _rs.getStatement(); }
     catch(SQLFeatureNotSupportedException sfnse) { printExceptionMessage(sfnse); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testGetStatement */
 
   @Test
@@ -81,7 +80,7 @@ public abstract class BaseResultSetTester
     enter();
     try { _rs.getWarnings(); }
     catch(SQLFeatureNotSupportedException sfnse) { printExceptionMessage(sfnse); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testGetWarnings */
   
   @Test
@@ -90,7 +89,7 @@ public abstract class BaseResultSetTester
     enter();
     try { _rs.clearWarnings(); }
     catch(SQLFeatureNotSupportedException sfnse) { printExceptionMessage(sfnse); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testClearWarnings */
   
   @Test
@@ -99,7 +98,7 @@ public abstract class BaseResultSetTester
     enter();
     try { _rs.getCursorName(); }
     catch(SQLFeatureNotSupportedException sfnse) { printExceptionMessage(sfnse); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testGetCursorName */
   
   @Test
@@ -126,7 +125,7 @@ public abstract class BaseResultSetTester
         System.out.println("Already closed!");
     }
     catch(SQLFeatureNotSupportedException sfnse) { printExceptionMessage(sfnse); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testClose */
   
   @Test
@@ -135,7 +134,7 @@ public abstract class BaseResultSetTester
     enter();
     try { _rs.isClosed(); }
     catch(SQLFeatureNotSupportedException sfnse) { printExceptionMessage(sfnse); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testIsClosed */
   
   @Test
@@ -144,7 +143,7 @@ public abstract class BaseResultSetTester
     enter();
     try { _rs.isBeforeFirst(); }
     catch(SQLFeatureNotSupportedException sfnse) { printExceptionMessage(sfnse); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testIsBeforeFirst */
   
   @Test
@@ -153,7 +152,7 @@ public abstract class BaseResultSetTester
     enter();
     try { _rs.isAfterLast(); }
     catch(SQLFeatureNotSupportedException sfnse) { printExceptionMessage(sfnse); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testIsAfterLast */
   
   @Test
@@ -162,7 +161,7 @@ public abstract class BaseResultSetTester
     enter();
     try { _rs.isFirst(); }
     catch(SQLFeatureNotSupportedException sfnse) { printExceptionMessage(sfnse); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testIsFirst */
   
   @Test
@@ -171,7 +170,7 @@ public abstract class BaseResultSetTester
     enter();
     try { _rs.isLast(); }
     catch(SQLFeatureNotSupportedException sfnse) { printExceptionMessage(sfnse); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testIsLast */
   
   @Test
@@ -180,7 +179,7 @@ public abstract class BaseResultSetTester
     enter();
     try { _rs.beforeFirst(); }
     catch(SQLFeatureNotSupportedException sfnse) { printExceptionMessage(sfnse); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testBeforeFirst */
   
   @Test
@@ -189,7 +188,7 @@ public abstract class BaseResultSetTester
     enter();
     try { _rs.afterLast(); }
     catch(SQLFeatureNotSupportedException sfnse) { printExceptionMessage(sfnse); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testAfterLast */
   
   @Test
@@ -198,7 +197,7 @@ public abstract class BaseResultSetTester
     enter();
     try { _rs.getRow(); }
     catch(SQLFeatureNotSupportedException sfnse) { printExceptionMessage(sfnse); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testGetRow */
   
   @Test
@@ -207,7 +206,7 @@ public abstract class BaseResultSetTester
     enter();
     try { _rs.absolute(1); }
     catch(SQLFeatureNotSupportedException sfnse) { printExceptionMessage(sfnse); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testAbsolute */
   
   @Test
@@ -216,7 +215,7 @@ public abstract class BaseResultSetTester
     enter();
     try { _rs.relative(1); }
     catch(SQLFeatureNotSupportedException sfnse) { printExceptionMessage(sfnse); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testRelative */
   
   @Test
@@ -229,7 +228,7 @@ public abstract class BaseResultSetTester
       _rs.previous();
     }
     catch(SQLFeatureNotSupportedException sfnse) { printExceptionMessage(sfnse); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testPrevious */
   
   @Test
@@ -238,7 +237,7 @@ public abstract class BaseResultSetTester
     enter();
     try { _rs.first(); }
     catch(SQLFeatureNotSupportedException sfnse) { printExceptionMessage(sfnse); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testFirst */
   
   @Test
@@ -247,7 +246,7 @@ public abstract class BaseResultSetTester
     enter();
     try { _rs.last(); }
     catch(SQLFeatureNotSupportedException sfnse) { printExceptionMessage(sfnse); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testLast */
   
   @Test
@@ -256,7 +255,7 @@ public abstract class BaseResultSetTester
     enter();
     try { _rs.next(); }
     catch(SQLFeatureNotSupportedException sfnse) { printExceptionMessage(sfnse); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testPrevious */
   
   @Test
@@ -265,7 +264,7 @@ public abstract class BaseResultSetTester
     enter();
     try { _rs.moveToInsertRow(); }
     catch(SQLFeatureNotSupportedException sfnse) { printExceptionMessage(sfnse); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testMoveToInsertRow */
 
   @Test
@@ -274,7 +273,7 @@ public abstract class BaseResultSetTester
     enter();
     try { _rs.moveToCurrentRow(); }
     catch(SQLFeatureNotSupportedException sfnse) { printExceptionMessage(sfnse); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testMoveToCurrentRow */
   
   @Test
@@ -283,7 +282,7 @@ public abstract class BaseResultSetTester
     enter();
     try { _rs.getMetaData(); }
     catch(SQLFeatureNotSupportedException sfnse) { printExceptionMessage(sfnse); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testGetMetaData */
   
   @Test
@@ -292,7 +291,7 @@ public abstract class BaseResultSetTester
     enter();
     try { _rs.getHoldability(); }
     catch(SQLFeatureNotSupportedException sfnse) { printExceptionMessage(sfnse); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testGetHoldability */
   
   @Test
@@ -301,7 +300,7 @@ public abstract class BaseResultSetTester
     enter();
     try { _rs.setFetchDirection(ResultSet.FETCH_UNKNOWN); }
     catch(SQLFeatureNotSupportedException sfnse) { printExceptionMessage(sfnse); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testSetFetchDirection */
   
   @Test
@@ -310,7 +309,7 @@ public abstract class BaseResultSetTester
     enter();
     try { _rs.getFetchDirection(); }
     catch(SQLFeatureNotSupportedException sfnse) { printExceptionMessage(sfnse); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testGetFetchDirection */
   
   @Test
@@ -319,7 +318,7 @@ public abstract class BaseResultSetTester
     enter();
     try { _rs.setFetchSize(20); }
     catch(SQLFeatureNotSupportedException sfnse) { printExceptionMessage(sfnse); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testSetFetchSize */
   
   @Test
@@ -328,7 +327,7 @@ public abstract class BaseResultSetTester
     enter();
     try { _rs.getFetchSize(); }
     catch(SQLFeatureNotSupportedException sfnse) { printExceptionMessage(sfnse); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testGetFetchSize */
   
   @Test
@@ -337,7 +336,7 @@ public abstract class BaseResultSetTester
     enter();
     try { _rs.getType(); }
     catch(SQLFeatureNotSupportedException sfnse) { printExceptionMessage(sfnse); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testGetType */
   
   @Test
@@ -346,7 +345,7 @@ public abstract class BaseResultSetTester
     enter();
     try { _rs.getConcurrency(); }
     catch(SQLFeatureNotSupportedException sfnse) { printExceptionMessage(sfnse); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testGetConcurrency */
   
   @Test
@@ -355,7 +354,7 @@ public abstract class BaseResultSetTester
     enter();
     try { _rs.findColumn("COL"); }
     catch(SQLFeatureNotSupportedException sfnse) { printExceptionMessage(sfnse); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testFindColumn */
   
   @Test
@@ -368,7 +367,7 @@ public abstract class BaseResultSetTester
       _rs.wasNull();
     }
     catch(SQLFeatureNotSupportedException sfnse) { printExceptionMessage(sfnse); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testWasNull */
 
   /* as BaseResultSet maps all column labels to column indexes using 
@@ -380,7 +379,7 @@ public abstract class BaseResultSetTester
     enter();
     try { _rs.updateNull("COL"); }
     catch(SQLFeatureNotSupportedException sfnse) { printExceptionMessage(sfnse); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testUpdateNull */
   
   @Test
@@ -389,7 +388,7 @@ public abstract class BaseResultSetTester
     enter();
     try { _rs.getString("COL"); }
     catch(SQLFeatureNotSupportedException sfnse) { printExceptionMessage(sfnse); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testGetString */
   
   @Test
@@ -398,7 +397,7 @@ public abstract class BaseResultSetTester
     enter();
     try { _rs.updateString("COL","Auää"); }
     catch(SQLFeatureNotSupportedException sfnse) { printExceptionMessage(sfnse); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testUpdateString */
   
   @Test
@@ -407,7 +406,7 @@ public abstract class BaseResultSetTester
     enter();
     try { _rs.getNString("COL"); }
     catch(SQLFeatureNotSupportedException sfnse) { printExceptionMessage(sfnse); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testGetString */
   
   @Test
@@ -416,7 +415,7 @@ public abstract class BaseResultSetTester
     enter();
     try { _rs.updateNString("COL","Auää"); }
     catch(SQLFeatureNotSupportedException sfnse) { printExceptionMessage(sfnse); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testUpdateNString */
   
   @Test
@@ -425,7 +424,7 @@ public abstract class BaseResultSetTester
     enter();
     try { _rs.getBoolean("COL"); }
     catch(SQLFeatureNotSupportedException sfnse) { printExceptionMessage(sfnse); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testGetBoolean */
   
   @Test
@@ -434,7 +433,7 @@ public abstract class BaseResultSetTester
     enter();
     try { _rs.updateBoolean("COL",true); }
     catch(SQLFeatureNotSupportedException sfnse) { printExceptionMessage(sfnse); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testUpdateBoolean */
   
   @Test
@@ -443,7 +442,7 @@ public abstract class BaseResultSetTester
     enter();
     try { _rs.getByte("COL"); }
     catch(SQLFeatureNotSupportedException sfnse) { printExceptionMessage(sfnse); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testGetByte */
   
   @Test
@@ -452,7 +451,7 @@ public abstract class BaseResultSetTester
     enter();
     try { _rs.updateByte("COL",(byte)100); }
     catch(SQLFeatureNotSupportedException sfnse) { printExceptionMessage(sfnse); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testUpdateByte */
   
   @Test
@@ -461,7 +460,7 @@ public abstract class BaseResultSetTester
     enter();
     try { _rs.getShort("COL"); }
     catch(SQLFeatureNotSupportedException sfnse) { printExceptionMessage(sfnse); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testGetShort */
   
   @Test
@@ -470,7 +469,7 @@ public abstract class BaseResultSetTester
     enter();
     try { _rs.updateShort("COL",(short)10000); }
     catch(SQLFeatureNotSupportedException sfnse) { printExceptionMessage(sfnse); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testUpdateShort */
   
   @Test
@@ -479,7 +478,7 @@ public abstract class BaseResultSetTester
     enter();
     try { _rs.getInt("COL"); }
     catch(SQLFeatureNotSupportedException sfnse) { printExceptionMessage(sfnse); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testGetInt */
   
   @Test
@@ -488,7 +487,7 @@ public abstract class BaseResultSetTester
     enter();
     try { _rs.updateInt("COL",100000000); }
     catch(SQLFeatureNotSupportedException sfnse) { printExceptionMessage(sfnse); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testUpdateInt */
   
   
@@ -498,7 +497,7 @@ public abstract class BaseResultSetTester
     enter();
     try { _rs.getLong("COL"); }
     catch(SQLFeatureNotSupportedException sfnse) { printExceptionMessage(sfnse); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testGetLong */
   
   @Test
@@ -507,7 +506,7 @@ public abstract class BaseResultSetTester
     enter();
     try { _rs.updateLong("COL",1000000000000l); }
     catch(SQLFeatureNotSupportedException sfnse) { printExceptionMessage(sfnse); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testUpdateLong */
   
   @Test
@@ -516,7 +515,7 @@ public abstract class BaseResultSetTester
     enter();
     try { _rs.getFloat("COL"); }
     catch(SQLFeatureNotSupportedException sfnse) { printExceptionMessage(sfnse); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testGetFloat */
   
   @Test
@@ -525,7 +524,7 @@ public abstract class BaseResultSetTester
     enter();
     try { _rs.updateFloat("COL",1.123456789f); }
     catch(SQLFeatureNotSupportedException sfnse) { printExceptionMessage(sfnse); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testUpdateFloat */
   
   @Test
@@ -534,7 +533,7 @@ public abstract class BaseResultSetTester
     enter();
     try { _rs.getDouble("COL"); }
     catch(SQLFeatureNotSupportedException sfnse) { printExceptionMessage(sfnse); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testGetDouble */
   
   @Test
@@ -543,7 +542,7 @@ public abstract class BaseResultSetTester
     enter();
     try { _rs.updateDouble("COL",1.1234567890123456789); }
     catch(SQLFeatureNotSupportedException sfnse) { printExceptionMessage(sfnse); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testUpdateDouble */
   
   @Test
@@ -552,7 +551,7 @@ public abstract class BaseResultSetTester
     enter();
     try { _rs.getBigDecimal("COL"); }
     catch(SQLFeatureNotSupportedException sfnse) { printExceptionMessage(sfnse); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testGetBigDecimal */
   
   @Test
@@ -561,7 +560,7 @@ public abstract class BaseResultSetTester
     enter();
     try { _rs.updateBigDecimal("COL",BigDecimal.TEN); }
     catch(SQLFeatureNotSupportedException sfnse) { printExceptionMessage(sfnse); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testUpdateBigDecimal */
   
   @Test
@@ -571,7 +570,7 @@ public abstract class BaseResultSetTester
     enter();
     try { _rs.getBigDecimal("COL",3); }
     catch(SQLFeatureNotSupportedException sfnse) { printExceptionMessage(sfnse); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testGetBigDecimal_String_Int */
   
   @Test
@@ -580,7 +579,7 @@ public abstract class BaseResultSetTester
     enter();
     try { _rs.getBytes("COL"); }
     catch(SQLFeatureNotSupportedException sfnse) { printExceptionMessage(sfnse); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testGetBytes */
   
   @Test
@@ -589,7 +588,7 @@ public abstract class BaseResultSetTester
     enter();
     try { _rs.updateBytes("COL",new byte[] {-9,-8,-7,-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6,7,8,9}); }
     catch(SQLFeatureNotSupportedException sfnse) { printExceptionMessage(sfnse); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testUpdateBytes */
   
   @Test
@@ -598,7 +597,7 @@ public abstract class BaseResultSetTester
     enter();
     try { _rs.getDate("COL"); }
     catch(SQLFeatureNotSupportedException sfnse) { printExceptionMessage(sfnse); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testGetDate */
   
   @Test
@@ -607,7 +606,7 @@ public abstract class BaseResultSetTester
     enter();
     try { _rs.updateDate("COL",new java.sql.Date((new java.util.Date()).getTime())); }
     catch(SQLFeatureNotSupportedException sfnse) { printExceptionMessage(sfnse); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testUpdateDate */
   
   @Test
@@ -617,7 +616,7 @@ public abstract class BaseResultSetTester
     Calendar cal = new GregorianCalendar();
     try { _rs.getDate("COL",cal); }
     catch(SQLFeatureNotSupportedException sfnse) { printExceptionMessage(sfnse); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testGetDate_Calendar */
   
   @Test
@@ -626,7 +625,7 @@ public abstract class BaseResultSetTester
     enter();
     try { _rs.getTime("COL"); }
     catch(SQLFeatureNotSupportedException sfnse) { printExceptionMessage(sfnse); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testGetTime */
   
   @Test
@@ -635,7 +634,7 @@ public abstract class BaseResultSetTester
     enter();
     try { _rs.updateTime("COL",new java.sql.Time(12*60*60*1000)); }
     catch(SQLFeatureNotSupportedException sfnse) { printExceptionMessage(sfnse); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testUpdateTime */
   
   @Test
@@ -645,7 +644,7 @@ public abstract class BaseResultSetTester
     Calendar cal = new GregorianCalendar();
     try { _rs.getTime("COL",cal); }
     catch(SQLFeatureNotSupportedException sfnse) { printExceptionMessage(sfnse); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testGetTime_Calendar */
   
   @Test
@@ -654,7 +653,7 @@ public abstract class BaseResultSetTester
     enter();
     try { _rs.getTimestamp("COL"); }
     catch(SQLFeatureNotSupportedException sfnse) { printExceptionMessage(sfnse); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testGetTimestamp */
   
   @Test
@@ -663,7 +662,7 @@ public abstract class BaseResultSetTester
     enter();
     try { _rs.updateTimestamp("COL",new java.sql.Timestamp((new java.util.Date()).getTime())); }
     catch(SQLFeatureNotSupportedException sfnse) { printExceptionMessage(sfnse); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testUpdateTimestamp */
   
   @Test
@@ -673,7 +672,7 @@ public abstract class BaseResultSetTester
     Calendar cal = new GregorianCalendar();
     try { _rs.getTimestamp("COL",cal); }
     catch(SQLFeatureNotSupportedException sfnse) { printExceptionMessage(sfnse); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testGetTimestamp_Calendar */
 
   @Test
@@ -682,7 +681,7 @@ public abstract class BaseResultSetTester
     enter();
     try { ((BaseResultSet)_rs).getDuration("COL"); }
     catch(SQLFeatureNotSupportedException sfnse) { printExceptionMessage(sfnse); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -692,7 +691,7 @@ public abstract class BaseResultSetTester
     Interval iv = new Interval(1,3,2);
     try { ((BaseResultSet)_rs).updateDuration("COL",iv.toDuration()); }
     catch(SQLFeatureNotSupportedException sfnse) { printExceptionMessage(sfnse); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testUpdateDuration */
   
   @Test
@@ -701,7 +700,7 @@ public abstract class BaseResultSetTester
     enter();
     try { _rs.getAsciiStream("COL"); }
     catch(SQLFeatureNotSupportedException sfnse) { printExceptionMessage(sfnse); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testGetAsciiStream */
   
   @Test
@@ -710,7 +709,7 @@ public abstract class BaseResultSetTester
     enter();
     try { _rs.updateAsciiStream("COL",new ByteArrayInputStream("abc".getBytes())); }
     catch(SQLFeatureNotSupportedException sfnse) { printExceptionMessage(sfnse); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testUpdateAsciiStream */
   
   @Test
@@ -719,7 +718,7 @@ public abstract class BaseResultSetTester
     enter();
     try { _rs.updateAsciiStream("COL",new ByteArrayInputStream("abc".getBytes()),2); }
     catch(SQLFeatureNotSupportedException sfnse) { printExceptionMessage(sfnse); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testUpdateAsciiStream_Int */
   
   @Test
@@ -728,7 +727,7 @@ public abstract class BaseResultSetTester
     enter();
     try { _rs.updateAsciiStream("COL",new ByteArrayInputStream("abc".getBytes()),2l); }
     catch(SQLFeatureNotSupportedException sfnse) { printExceptionMessage(sfnse); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testUpdateAsciiStream_Long */
   
   @Test
@@ -738,7 +737,7 @@ public abstract class BaseResultSetTester
     enter();
     try { _rs.getUnicodeStream("COL"); }
     catch(SQLFeatureNotSupportedException sfnse) { printExceptionMessage(sfnse); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testGetUnicodeStream */
   
   @Test
@@ -747,7 +746,7 @@ public abstract class BaseResultSetTester
     enter();
     try { _rs.getCharacterStream("COL"); }
     catch(SQLFeatureNotSupportedException sfnse) { printExceptionMessage(sfnse); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testGetCharacterStream */
   
   @Test
@@ -756,7 +755,7 @@ public abstract class BaseResultSetTester
     enter();
     try { _rs.updateCharacterStream("COL",new StringReader("auää")); }
     catch(SQLFeatureNotSupportedException sfnse) { printExceptionMessage(sfnse); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testUpdateCharacterStream */
   
   @Test
@@ -765,7 +764,7 @@ public abstract class BaseResultSetTester
     enter();
     try { _rs.updateCharacterStream("COL",new StringReader("auää"),2); }
     catch(SQLFeatureNotSupportedException sfnse) { printExceptionMessage(sfnse); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testUpdateCharacterStream_Int */
   
   @Test
@@ -774,7 +773,7 @@ public abstract class BaseResultSetTester
     enter();
     try { _rs.updateCharacterStream("COL",new StringReader("auää"),2l); }
     catch(SQLFeatureNotSupportedException sfnse) { printExceptionMessage(sfnse); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testUpdateCharacterStream_Long */
   
   @Test
@@ -783,7 +782,7 @@ public abstract class BaseResultSetTester
     enter();
     try { _rs.getNCharacterStream("COL"); }
     catch(SQLFeatureNotSupportedException sfnse) { printExceptionMessage(sfnse); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testGetNCharacterStream */
   
   @Test
@@ -792,7 +791,7 @@ public abstract class BaseResultSetTester
     enter();
     try { _rs.updateNCharacterStream("COL",new StringReader("auää")); }
     catch(SQLFeatureNotSupportedException sfnse) { printExceptionMessage(sfnse); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testUpdateNCharacterStream */
   
   @Test
@@ -801,7 +800,7 @@ public abstract class BaseResultSetTester
     enter();
     try { _rs.updateNCharacterStream("COL",new StringReader("auää"),2); }
     catch(SQLFeatureNotSupportedException sfnse) { printExceptionMessage(sfnse); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testUpdateNCharacterStream_String_Int */
   
   @Test
@@ -810,7 +809,7 @@ public abstract class BaseResultSetTester
     enter();
     try { _rs.updateNCharacterStream("COL",new StringReader("auää"),2l); }
     catch(SQLFeatureNotSupportedException sfnse) { printExceptionMessage(sfnse); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testUpdateNCharacterStream_String_Long */
   
   @Test
@@ -819,7 +818,7 @@ public abstract class BaseResultSetTester
     enter();
     try { _rs.getBinaryStream("COL"); }
     catch(SQLFeatureNotSupportedException sfnse) { printExceptionMessage(sfnse); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testGetBinaryStream */
   
   @Test
@@ -828,7 +827,7 @@ public abstract class BaseResultSetTester
     enter();
     try { _rs.updateBinaryStream("COL",new ByteArrayInputStream(new byte[] {-9,-8,-7,-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6,7,8,9})); }
     catch(SQLFeatureNotSupportedException sfnse) { printExceptionMessage(sfnse); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testUpdateBinaryStream */
   
   @Test
@@ -837,7 +836,7 @@ public abstract class BaseResultSetTester
     enter();
     try { _rs.updateBinaryStream("COL",new ByteArrayInputStream(new byte[] {-9,-8,-7,-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6,7,8,9}),2); }
     catch(SQLFeatureNotSupportedException sfnse) { printExceptionMessage(sfnse); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testUpdateBinaryStream_Int */
   
   @Test
@@ -846,7 +845,7 @@ public abstract class BaseResultSetTester
     enter();
     try { _rs.updateBinaryStream("COL",new ByteArrayInputStream(new byte[] {-9,-8,-7,-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6,7,8,9}),2l); }
     catch(SQLFeatureNotSupportedException sfnse) { printExceptionMessage(sfnse); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testUpdateBinaryStream_Long */
   
   @Test
@@ -855,7 +854,7 @@ public abstract class BaseResultSetTester
     enter();
     try { _rs.getObject("COL"); }
     catch(SQLFeatureNotSupportedException sfnse) { printExceptionMessage(sfnse); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testGetObject */
   
   @Test
@@ -864,7 +863,7 @@ public abstract class BaseResultSetTester
     enter();
     try { _rs.updateObject("COL",Integer.valueOf(12345)); }
     catch(SQLFeatureNotSupportedException sfnse) { printExceptionMessage(sfnse); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testUpdateObject */
   
   @Test
@@ -873,7 +872,7 @@ public abstract class BaseResultSetTester
     enter();
     try { _rs.updateObject("COL",Integer.valueOf(12345),2); }
     catch(SQLFeatureNotSupportedException sfnse) { printExceptionMessage(sfnse); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testUpdateObject_String_Int */
   
   @Test
@@ -884,7 +883,7 @@ public abstract class BaseResultSetTester
     map.put(String.class.getName(), String.class);
     try { _rs.getObject("COL",map); }
     catch(SQLFeatureNotSupportedException sfnse) { printExceptionMessage(sfnse); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testGetObject_Map */
   
   @Test
@@ -893,7 +892,7 @@ public abstract class BaseResultSetTester
     enter();
     try { _rs.getObject("COL",String.class); }
     catch(SQLFeatureNotSupportedException sfnse) { printExceptionMessage(sfnse); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testGetObject_Class */
   
   @Test
@@ -902,7 +901,7 @@ public abstract class BaseResultSetTester
     enter();
     try { _rs.getRef("COL"); }
     catch(SQLFeatureNotSupportedException sfnse) { printExceptionMessage(sfnse); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testGetRef */
   
   @Test
@@ -915,7 +914,7 @@ public abstract class BaseResultSetTester
       _rs.updateRef(1,ref); 
     }
     catch(SQLFeatureNotSupportedException sfnse) { printExceptionMessage(sfnse); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testUpdateRef */
   
   @Test
@@ -924,7 +923,7 @@ public abstract class BaseResultSetTester
     enter();
     try { _rs.getBlob("COL"); }
     catch(SQLFeatureNotSupportedException sfnse) { printExceptionMessage(sfnse); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testGetBlob */
   
   @Test
@@ -938,7 +937,7 @@ public abstract class BaseResultSetTester
       _rs.updateBlob("COL",blob);
     }
     catch(SQLFeatureNotSupportedException sfnse) { printExceptionMessage(sfnse); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testUpdateBlob */
   
   @Test
@@ -947,7 +946,7 @@ public abstract class BaseResultSetTester
     enter();
     try { _rs.updateBlob("COL",new ByteArrayInputStream(new byte[]{1,2,3})); }
     catch(SQLFeatureNotSupportedException sfnse) { printExceptionMessage(sfnse); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testUpdateBlob_InputStream */
   
   @Test
@@ -956,7 +955,7 @@ public abstract class BaseResultSetTester
     enter();
     try { _rs.updateBlob("COL",new ByteArrayInputStream(new byte[]{1,2,3}),3l); }
     catch(SQLFeatureNotSupportedException sfnse) { printExceptionMessage(sfnse); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testUpdateBlob_String_InputStream_Long */
   
   @Test
@@ -969,7 +968,7 @@ public abstract class BaseResultSetTester
       clob.free();
     }
     catch(SQLFeatureNotSupportedException sfnse) { printExceptionMessage(sfnse); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testGetClob */
   
   @Test
@@ -984,7 +983,7 @@ public abstract class BaseResultSetTester
       clob.free();
     }
     catch(SQLFeatureNotSupportedException sfnse) { printExceptionMessage(sfnse); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testUpdateClob */
   
   @Test
@@ -997,7 +996,7 @@ public abstract class BaseResultSetTester
       _rs.getClob("COL").free();
     }
     catch(SQLFeatureNotSupportedException sfnse) { printExceptionMessage(sfnse); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testUpdateClob_Reader */
   
   @Test
@@ -1010,7 +1009,7 @@ public abstract class BaseResultSetTester
       _rs.getClob("COL").free();
     }
     catch(SQLFeatureNotSupportedException sfnse) { printExceptionMessage(sfnse); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testUpdateClob_Reader_Long */
   
   @Test
@@ -1023,7 +1022,7 @@ public abstract class BaseResultSetTester
       nclob.free();
     }
     catch(SQLFeatureNotSupportedException sfnse) { printExceptionMessage(sfnse); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testGetNClob */
   
   @Test
@@ -1038,7 +1037,7 @@ public abstract class BaseResultSetTester
       nclob.free();
     }
     catch(SQLFeatureNotSupportedException sfnse) { printExceptionMessage(sfnse); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testUpdateNClob */
   
   @Test
@@ -1051,7 +1050,7 @@ public abstract class BaseResultSetTester
       _rs.getNClob("COL").free();
     }
     catch(SQLFeatureNotSupportedException sfnse) { printExceptionMessage(sfnse); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testUpdateNClob_Reader */
   
   @Test
@@ -1064,7 +1063,7 @@ public abstract class BaseResultSetTester
       _rs.getNClob("COL").free();
     }
     catch(SQLFeatureNotSupportedException sfnse) { printExceptionMessage(sfnse); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testUpdateNClob_Reader_Long */
   
   @Test
@@ -1076,7 +1075,7 @@ public abstract class BaseResultSetTester
       SQLXML sqlxml = _rs.getSQLXML("COL");
       sqlxml.free();
     }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testGetSqlXml */
   
   @Test
@@ -1089,7 +1088,7 @@ public abstract class BaseResultSetTester
       _rs.updateSQLXML("COL",sqlxml);
       sqlxml.free();
     }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testUpdateSqlXml */
   
   @Test
@@ -1101,7 +1100,7 @@ public abstract class BaseResultSetTester
       Array array = _rs.getArray("COL");
       array.free();
     }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testGetArray */
   
   @Test
@@ -1114,7 +1113,7 @@ public abstract class BaseResultSetTester
       _rs.updateArray("COL",array);
       array.free();
     }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testUpdateArray */
   
   @Test
@@ -1122,7 +1121,7 @@ public abstract class BaseResultSetTester
   {
     enter();
     try { _rs.getRowId("COL"); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testGetRowId */
   
   @Test
@@ -1134,7 +1133,7 @@ public abstract class BaseResultSetTester
       RowId rowid = _rs.getRowId(1);
       _rs.updateRowId("COL",rowid); 
     }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testUpdateRowId */
 
   @Test
@@ -1153,7 +1152,7 @@ public abstract class BaseResultSetTester
       // value updates go here 
       _rs.insertRow(); 
     }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testInsertRow */
 
   @Test
@@ -1161,7 +1160,7 @@ public abstract class BaseResultSetTester
   {
     enter();
     try { _rs.updateRow(); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testUpdateRow */
 
   @Test
@@ -1169,7 +1168,7 @@ public abstract class BaseResultSetTester
   {
     enter();
     try { _rs.deleteRow(); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testDeleteRow */
 
   @Test
@@ -1177,7 +1176,7 @@ public abstract class BaseResultSetTester
   {
     enter();
     try { _rs.refreshRow(); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* refreshRow */
 
   @Test
@@ -1186,7 +1185,7 @@ public abstract class BaseResultSetTester
     enter();
     try { _rs.rowUpdated(); }
     catch(SQLFeatureNotSupportedException sfnse) { System.out.println(EU.getExceptionMessage(sfnse)); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testRowUpdated */
   
   @Test
@@ -1195,7 +1194,7 @@ public abstract class BaseResultSetTester
     enter();
     try { _rs.rowInserted(); }
     catch(SQLFeatureNotSupportedException sfnse) { System.out.println(EU.getExceptionMessage(sfnse)); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testRowInserted */
   
   @Test
@@ -1204,7 +1203,7 @@ public abstract class BaseResultSetTester
     enter();
     try { _rs.rowDeleted(); }
     catch(SQLFeatureNotSupportedException sfnse) { System.out.println(EU.getExceptionMessage(sfnse)); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* testRowDeleted */
 
   @Test

@@ -1,8 +1,9 @@
 package ch.enterag.utils.base;
 
+import org.junit.Assert;
+
 import java.io.*;
 import java.util.*;
-import static org.junit.Assert.*;
 
 public class ConnectionProperties
   extends Properties
@@ -18,7 +19,7 @@ public class ConnectionProperties
       load(rdr);
       rdr.close();
     }
-    catch (IOException ie) { fail(ie.getClass().getName()+": "+ie.getMessage()); }
+    catch (IOException ie) { Assert.fail(ie.getClass().getName()+": "+ie.getMessage()); }
   }
   
   public ConnectionProperties(String sDb)

@@ -2,7 +2,6 @@ package ch.enterag.utils.jdbc;
 
 import java.util.*;
 import java.sql.*;
-import static org.junit.Assert.*;
 import org.junit.*;
 import ch.enterag.utils.*;
 import ch.enterag.utils.database.*;
@@ -67,7 +66,7 @@ public abstract class BaseDatabaseMetaDataTester
     else if (rs.isClosed()) 
       throw new SQLException("Empty meta data result set!");
     else
-      fail("Invalid meta data result set");
+      Assert.fail("Invalid meta data result set");
   } /* print */
   
   private String getCallingMethod(int iDepth)
@@ -97,7 +96,7 @@ public abstract class BaseDatabaseMetaDataTester
         conn.close();
       }
     }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   } /* tearDown */
   
   /*--------------------------------------------------------------------
@@ -108,7 +107,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { _dmd.getConnection(); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
 
   @Test
@@ -116,7 +115,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.allProceduresAreCallable())); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
 
   @Test
@@ -124,7 +123,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.allTablesAreSelectable())); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
 
   @Test
@@ -132,7 +131,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.getURL())); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -140,7 +139,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.getUserName())); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -148,7 +147,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.isReadOnly())); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -156,7 +155,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.nullsAreSortedHigh())); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -164,7 +163,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.nullsAreSortedLow())); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -172,7 +171,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.nullsAreSortedAtStart())); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -180,7 +179,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.nullsAreSortedAtEnd())); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -188,7 +187,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.getDatabaseProductName())); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -196,7 +195,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.getDatabaseProductVersion())); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -204,7 +203,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println("Wrapped "+String.valueOf(_dmd.getDriverName())); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -212,7 +211,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.getDriverVersion())); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -234,7 +233,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.usesLocalFiles())); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -242,7 +241,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.supportsMixedCaseIdentifiers())); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -250,7 +249,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.storesUpperCaseIdentifiers())); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -258,7 +257,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.storesLowerCaseIdentifiers())); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -266,7 +265,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.storesMixedCaseIdentifiers())); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -274,7 +273,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.supportsMixedCaseQuotedIdentifiers())); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -282,7 +281,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.storesUpperCaseQuotedIdentifiers())); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
 
   @Test
@@ -290,7 +289,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.storesLowerCaseQuotedIdentifiers())); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
 
   @Test
@@ -298,7 +297,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.storesMixedCaseQuotedIdentifiers())); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
 
   @Test
@@ -306,7 +305,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.getIdentifierQuoteString())); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -314,7 +313,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.getSQLKeywords())); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -322,7 +321,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.getNumericFunctions())); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -330,7 +329,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.getStringFunctions())); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -338,7 +337,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.getSystemFunctions())); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -346,7 +345,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.getTimeDateFunctions())); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -354,7 +353,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.getSearchStringEscape())); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -362,7 +361,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.getExtraNameCharacters())); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -370,7 +369,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.supportsAlterTableWithAddColumn())); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -378,7 +377,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.supportsAlterTableWithDropColumn())); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -386,7 +385,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.supportsColumnAliasing())); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -394,7 +393,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.nullPlusNonNullIsNull())); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -402,7 +401,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.supportsConvert())); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -424,7 +423,7 @@ public abstract class BaseDatabaseMetaDataTester
         }
       }
     } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -432,7 +431,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.supportsTableCorrelationNames())); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -440,7 +439,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.supportsDifferentTableCorrelationNames())); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -448,7 +447,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.supportsExpressionsInOrderBy())); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -456,7 +455,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.supportsOrderByUnrelated())); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -464,7 +463,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.supportsGroupBy())); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -472,7 +471,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.supportsGroupByUnrelated())); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -480,7 +479,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.supportsGroupByBeyondSelect())); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -488,7 +487,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.supportsLikeEscapeClause())); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -496,7 +495,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.supportsMultipleResultSets())); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -504,7 +503,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.supportsMultipleTransactions())); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -512,7 +511,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.supportsNonNullableColumns())); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -520,7 +519,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.supportsMinimumSQLGrammar())); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -528,7 +527,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.supportsCoreSQLGrammar())); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -536,7 +535,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.supportsExtendedSQLGrammar())); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -544,7 +543,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.supportsANSI92EntryLevelSQL())); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -552,7 +551,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.supportsANSI92IntermediateSQL())); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -560,7 +559,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.supportsANSI92FullSQL())); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -568,7 +567,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.supportsIntegrityEnhancementFacility())); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -576,7 +575,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.supportsOuterJoins())); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -584,7 +583,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.supportsFullOuterJoins())); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -592,7 +591,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.supportsLimitedOuterJoins())); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -600,7 +599,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.getSchemaTerm())); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -608,7 +607,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.getProcedureTerm())); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -616,7 +615,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.getCatalogTerm())); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -624,7 +623,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.isCatalogAtStart())); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -632,7 +631,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.getCatalogSeparator())); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -640,7 +639,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.supportsSchemasInDataManipulation())); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -648,7 +647,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.supportsSchemasInProcedureCalls())); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -656,7 +655,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.supportsSchemasInTableDefinitions())); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -664,7 +663,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.supportsSchemasInIndexDefinitions())); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -672,7 +671,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.supportsSchemasInPrivilegeDefinitions())); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -680,7 +679,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.supportsCatalogsInDataManipulation())); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -688,7 +687,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.supportsCatalogsInProcedureCalls())); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -696,7 +695,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.supportsCatalogsInTableDefinitions())); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -704,7 +703,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.supportsCatalogsInIndexDefinitions())); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -712,7 +711,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.supportsCatalogsInPrivilegeDefinitions())); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -720,7 +719,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.supportsPositionedDelete())); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -728,7 +727,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.supportsPositionedUpdate())); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -736,7 +735,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.supportsSelectForUpdate())); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -744,7 +743,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.supportsStoredProcedures())); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -752,7 +751,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.supportsSubqueriesInComparisons())); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -760,7 +759,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.supportsSubqueriesInExists())); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -768,7 +767,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.supportsSubqueriesInIns())); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -776,7 +775,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.supportsSubqueriesInQuantifieds())); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -784,7 +783,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.supportsCorrelatedSubqueries())); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -792,7 +791,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.supportsUnion())); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -800,7 +799,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.supportsUnionAll())); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -808,7 +807,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.supportsOpenCursorsAcrossCommit())); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -816,7 +815,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.supportsOpenCursorsAcrossRollback())); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -824,7 +823,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.supportsOpenStatementsAcrossCommit())); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -832,7 +831,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.supportsOpenStatementsAcrossRollback())); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -840,7 +839,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.getMaxBinaryLiteralLength())); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -848,7 +847,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.getMaxCharLiteralLength())); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -856,7 +855,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.getMaxColumnNameLength())); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -864,7 +863,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.getMaxColumnsInGroupBy())); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -872,7 +871,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.getMaxColumnsInIndex())); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -880,7 +879,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.getMaxColumnsInOrderBy())); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -888,7 +887,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.getMaxColumnsInSelect())); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -896,7 +895,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.getMaxColumnsInTable())); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -904,7 +903,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.getMaxConnections())); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -912,7 +911,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.getMaxCursorNameLength())); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -920,7 +919,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.getMaxIndexLength())); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -928,7 +927,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.getMaxSchemaNameLength())); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -936,7 +935,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.getMaxProcedureNameLength())); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -944,7 +943,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.getMaxCatalogNameLength())); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -952,7 +951,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.getMaxRowSize())); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -960,7 +959,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.doesMaxRowSizeIncludeBlobs())); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -968,7 +967,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.getMaxStatementLength())); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -976,7 +975,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.getMaxStatements())); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -984,7 +983,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.getMaxTableNameLength())); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -992,7 +991,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.getMaxTablesInSelect())); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -1000,7 +999,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.getMaxUserNameLength())); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -1008,7 +1007,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.getDefaultTransactionIsolation())); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -1016,7 +1015,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.supportsTransactions())); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -1036,7 +1035,7 @@ public abstract class BaseDatabaseMetaDataTester
       println("REPEATABLE_SERIALIZABLE: "+
         String.valueOf(_dmd.supportsTransactionIsolationLevel(Connection.TRANSACTION_SERIALIZABLE))); 
     } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -1044,7 +1043,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.supportsDataDefinitionAndDataManipulationTransactions())); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
 
   @Test
@@ -1052,7 +1051,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.supportsDataManipulationTransactionsOnly())); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
 
   @Test
@@ -1060,7 +1059,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.dataDefinitionCausesTransactionCommit())); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
 
   @Test
@@ -1068,7 +1067,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.dataDefinitionIgnoredInTransactions())); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
 
   @Test
@@ -1076,7 +1075,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { print(_dmd.getProcedures(null,null,"%")); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
 
   @Test
@@ -1084,7 +1083,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { print(_dmd.getProcedureColumns(null,null,"%","%")); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
 
   @Test
@@ -1092,7 +1091,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { print(_dmd.getTables(null,null,"%",null)); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
 
   @Test
@@ -1100,7 +1099,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { print(_dmd.getSchemas()); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
 
   @Test
@@ -1108,7 +1107,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { print(_dmd.getCatalogs()); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
 
   @Test
@@ -1116,7 +1115,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { print(_dmd.getTableTypes()); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
 
   @Test
@@ -1124,7 +1123,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { print(_dmd.getColumns(null,null,"%","%")); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
 
   @Test
@@ -1132,7 +1131,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { print(_dmd.getColumnPrivileges(null,null,"%","%")); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
 
   @Test
@@ -1140,7 +1139,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { print(_dmd.getTablePrivileges(null,null,"%")); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
 
   @Test
@@ -1148,7 +1147,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { print(_dmd.getBestRowIdentifier(null,null,"%",DatabaseMetaData.bestRowUnknown,true)); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -1156,7 +1155,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { print(_dmd.getVersionColumns(null,null,"%")); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -1164,7 +1163,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { print(_dmd.getPrimaryKeys(null,null,"%")); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -1172,7 +1171,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { print(_dmd.getImportedKeys(null,null,"%")); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -1180,7 +1179,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { print(_dmd.getExportedKeys(null,null,"%")); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -1188,7 +1187,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { print(_dmd.getCrossReference(null,null,"%",null,null,"%")); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -1196,7 +1195,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { print(_dmd.getTypeInfo()); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -1204,7 +1203,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { print(_dmd.getIndexInfo(null,null,"%",false,false)); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -1223,7 +1222,7 @@ public abstract class BaseDatabaseMetaDataTester
         println(SqlTypes.getTypeName(iType)+": "+String.valueOf(_dmd.supportsResultSetType(iType))); 
       }
     } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
 
   @Test
@@ -1243,7 +1242,7 @@ public abstract class BaseDatabaseMetaDataTester
         println(SqlTypes.getTypeName(iType)+": "+String.valueOf(_dmd.supportsResultSetConcurrency(iType,ResultSet.CONCUR_READ_ONLY))+", "+String.valueOf(_dmd.supportsResultSetConcurrency(iType,ResultSet.CONCUR_UPDATABLE))); 
       }
     } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
   
   @Test
@@ -1259,7 +1258,7 @@ public abstract class BaseDatabaseMetaDataTester
         println(SqlTypes.getTypeName(iType)+": "+String.valueOf(_dmd.ownUpdatesAreVisible(iType))); 
       }
     } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
 
   @Test
@@ -1275,7 +1274,7 @@ public abstract class BaseDatabaseMetaDataTester
         println(SqlTypes.getTypeName(iType)+": "+String.valueOf(_dmd.ownDeletesAreVisible(iType))); 
       }
     } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
 
   @Test
@@ -1291,7 +1290,7 @@ public abstract class BaseDatabaseMetaDataTester
         println(SqlTypes.getTypeName(iType)+": "+String.valueOf(_dmd.ownInsertsAreVisible(iType))); 
       }
     } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
 
   @Test
@@ -1307,7 +1306,7 @@ public abstract class BaseDatabaseMetaDataTester
         println(SqlTypes.getTypeName(iType)+": "+String.valueOf(_dmd.othersUpdatesAreVisible(iType))); 
       }
     } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
 
   @Test
@@ -1323,7 +1322,7 @@ public abstract class BaseDatabaseMetaDataTester
         println(SqlTypes.getTypeName(iType)+": "+String.valueOf(_dmd.othersDeletesAreVisible(iType))); 
       }
     } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
 
   @Test
@@ -1339,7 +1338,7 @@ public abstract class BaseDatabaseMetaDataTester
         println(SqlTypes.getTypeName(iType)+": "+String.valueOf(_dmd.othersInsertsAreVisible(iType))); 
       }
     } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
 
   @Test
@@ -1355,7 +1354,7 @@ public abstract class BaseDatabaseMetaDataTester
         println(SqlTypes.getTypeName(iType)+": "+String.valueOf(_dmd.updatesAreDetected(iType))); 
       }
     } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
 
   @Test
@@ -1371,7 +1370,7 @@ public abstract class BaseDatabaseMetaDataTester
         println(SqlTypes.getTypeName(iType)+": "+String.valueOf(_dmd.deletesAreDetected(iType))); 
       }
     } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
 
   @Test
@@ -1387,7 +1386,7 @@ public abstract class BaseDatabaseMetaDataTester
         println(SqlTypes.getTypeName(iType)+": "+String.valueOf(_dmd.insertsAreDetected(iType))); 
       }
     } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
 
   @Test
@@ -1395,7 +1394,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.supportsBatchUpdates())); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
 
   @Test
@@ -1403,7 +1402,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { print(_dmd.getUDTs(null,null,"%",null)); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
 
   @Test
@@ -1411,7 +1410,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.supportsSavepoints())); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
 
   @Test
@@ -1419,7 +1418,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.supportsNamedParameters())); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
 
   @Test
@@ -1427,7 +1426,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.supportsMultipleOpenResults())); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
 
   @Test
@@ -1435,7 +1434,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.supportsGetGeneratedKeys())); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
 
   @Test
@@ -1444,7 +1443,7 @@ public abstract class BaseDatabaseMetaDataTester
     enter();
     try { print(_dmd.getSuperTypes(null,null,"%")); } 
     catch(SQLFeatureNotSupportedException sfnse) { System.out.println(EU.getExceptionMessage(sfnse)); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
 
   @Test
@@ -1453,7 +1452,7 @@ public abstract class BaseDatabaseMetaDataTester
     enter();
     try { print(_dmd.getSuperTables(null,null,"%")); } 
     catch(SQLFeatureNotSupportedException sfnse) { System.out.println(EU.getExceptionMessage(sfnse)); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
 
   @Test
@@ -1462,7 +1461,7 @@ public abstract class BaseDatabaseMetaDataTester
     enter();
     try { print(_dmd.getAttributes(null,null,"%","%")); } 
     catch(SQLFeatureNotSupportedException sfnse) { System.out.println(EU.getExceptionMessage(sfnse)); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
 
   @Test
@@ -1470,7 +1469,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.supportsResultSetHoldability(ResultSet.HOLD_CURSORS_OVER_COMMIT))+", "+String.valueOf(_dmd.supportsResultSetHoldability(ResultSet.CLOSE_CURSORS_AT_COMMIT))); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
 
   @Test
@@ -1478,7 +1477,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.getDatabaseMajorVersion())); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
 
   @Test
@@ -1486,7 +1485,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.getDatabaseMinorVersion())); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
 
   @Test
@@ -1494,7 +1493,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.getSQLStateType())); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
 
   @Test
@@ -1502,7 +1501,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.locatorsUpdateCopy())); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
 
   @Test
@@ -1510,7 +1509,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.supportsStatementPooling())); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
 
   @Test
@@ -1519,7 +1518,7 @@ public abstract class BaseDatabaseMetaDataTester
     enter();
     try { println(String.valueOf(_dmd.getRowIdLifetime())); } 
     catch(SQLFeatureNotSupportedException sfnse) { System.out.println(EU.getExceptionMessage(sfnse)); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
 
   @Test
@@ -1527,7 +1526,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { print(_dmd.getSchemas(null,"%")); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
 
   @Test
@@ -1535,7 +1534,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.supportsStoredFunctionsUsingCallSyntax())); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
 
   @Test
@@ -1543,7 +1542,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { println(String.valueOf(_dmd.autoCommitFailureClosesAllResultSets())); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
 
   @Test
@@ -1551,7 +1550,7 @@ public abstract class BaseDatabaseMetaDataTester
   {
     enter();
     try { print(_dmd.getClientInfoProperties()); } 
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
 
   @Test
@@ -1560,7 +1559,7 @@ public abstract class BaseDatabaseMetaDataTester
     enter();
     try { print(_dmd.getFunctions(null,null,"%")); } 
     catch(SQLFeatureNotSupportedException sfnse) { System.out.println(EU.getExceptionMessage(sfnse)); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
 
   @Test
@@ -1569,7 +1568,7 @@ public abstract class BaseDatabaseMetaDataTester
     enter();
     try { print(_dmd.getFunctionColumns(null,null,"%","%")); } 
     catch(SQLFeatureNotSupportedException sfnse) { System.out.println(EU.getExceptionMessage(sfnse)); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
 
   @Test
@@ -1578,7 +1577,7 @@ public abstract class BaseDatabaseMetaDataTester
     enter();
     try { print(_dmd.getPseudoColumns(null,null,"%","%")); } 
     catch(SQLFeatureNotSupportedException sfnse) { System.out.println(EU.getExceptionMessage(sfnse)); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
 
   @Test
@@ -1587,7 +1586,7 @@ public abstract class BaseDatabaseMetaDataTester
     enter();
     try { println(String.valueOf(_dmd.generatedKeyAlwaysReturned())); }
     catch(SQLFeatureNotSupportedException sfnse) { System.out.println(EU.getExceptionMessage(sfnse)); }
-    catch(SQLException se) { fail(EU.getExceptionMessage(se)); }
+    catch(SQLException se) { Assert.fail(EU.getExceptionMessage(se)); }
   }
 
 } /* class BaseDatabaseMetaDataTester */
