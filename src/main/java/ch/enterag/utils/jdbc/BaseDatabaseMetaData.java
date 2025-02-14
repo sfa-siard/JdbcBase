@@ -34,6 +34,7 @@ public abstract class BaseDatabaseMetaData
       if (sPattern.length() > 0)
       {
         sPattern = sPattern.
+          replace(getSearchStringEscape(), getSearchStringEscape()+getSearchStringEscape()).
           replace("%", getSearchStringEscape()+"%").
           replace("_", getSearchStringEscape()+"_");
       }
