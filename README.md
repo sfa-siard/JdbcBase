@@ -3,11 +3,6 @@
 
 JdbcBase was developed as part of the SIARD project. It is used by all JDBC wrapper implementations of the SIARD project in order to achieve a common truly standardized (JDBC 4.1 and SQL:2008) access to various proprietary databases.
 
-
-## Prerequisites
-
-Java 1.8
-
 ### Build the project
 ```shell
 ./gradlew clean build
