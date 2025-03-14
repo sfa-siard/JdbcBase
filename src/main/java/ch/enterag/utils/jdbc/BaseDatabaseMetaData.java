@@ -6,15 +6,13 @@ import java.sql.*;
  * BaseDatabaseMetaData implements wrapped DatabaseMetaData and serves
  * as a base for derived JDBC wrappers.
  */
-public abstract class BaseDatabaseMetaData
-        implements DatabaseMetaData {
-    public static final String _sQUERY_TEXT = "QUERY_TEXT";
+public abstract class BaseDatabaseMetaData implements DatabaseMetaData {
 
     public String toPattern(String sIdentifier)
             throws SQLException {
         String sPattern = sIdentifier;
         if (sPattern != null) {
-            if (sPattern.length() > 0) {
+            if (!sPattern.isEmpty()) {
                 sPattern = sPattern.
                         replace(getSearchStringEscape(), getSearchStringEscape() + getSearchStringEscape()).
                         replace("%", getSearchStringEscape() + "%").
@@ -25,15 +23,15 @@ public abstract class BaseDatabaseMetaData
         return sPattern;
     }
 
-    private DatabaseMetaData _dmdWrapped = null;
+    private final DatabaseMetaData _dmdWrapped;
 
     /**
      * convert an AbstractMethodError into an SQLFeatureNotSupportedEception.
      * This error indicates that the JDBC driver wrapped implements an
      * earlier version of JDBC which did not include this method.
      *
-     * @param ame
-     * @throws SQLFeatureNotSupportedException
+     * @param ame - AbstractMethodError
+     * @throws SQLFeatureNotSupportedException - thrown if the method is not supported
      */
     private void throwUndefinedMethod(AbstractMethodError ame)
             throws SQLFeatureNotSupportedException {
