@@ -8,6 +8,8 @@ import java.sql.*;
  */
 public abstract class BaseDatabaseMetaData implements DatabaseMetaData {
 
+    public static final String _sQUERY_TEXT = "QUERY_TEXT";
+
     public String toPattern(String sIdentifier)
             throws SQLException {
         String sPattern = sIdentifier;
