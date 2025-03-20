@@ -1,7 +1,7 @@
 name: Create and upload jar file
 
 env:
-  PROJECT_NAME: JdbcBase
+  PROJECT_NAME: jdbcbase
 
 on:
   push:
