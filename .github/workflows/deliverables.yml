@@ -2,7 +2,7 @@ name: Create and upload jar file
 
 env:
   PROJECT_NAME: JdbcBase
-  NAME_TAG: github.ref == 'refs/heads/main' && 'jdbcbase-${{github.ref_name}}' || 'jdbcbase-${{github.ref_name}}-snapshot'
+  NAME_TAG: {{github.ref == 'refs/heads/main' && 'jdbcbase-${{github.head_ref}}' || 'jdbcbase-${{github.head_ref}}-snapshot' }}
 
 on:
   push:
