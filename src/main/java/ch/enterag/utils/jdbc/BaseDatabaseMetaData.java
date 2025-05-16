@@ -28,7 +28,7 @@ public abstract class BaseDatabaseMetaData implements DatabaseMetaData {
     private final DatabaseMetaData _dmdWrapped;
 
     /**
-     * convert an AbstractMethodError into an SQLFeatureNotSupportedEception.
+     * convert an AbstractMethodError into an SQLFeatureNotSupportedException.
      * This error indicates that the JDBC driver wrapped implements an
      * earlier version of JDBC which did not include this method.
      *
