@@ -37,6 +37,8 @@ tasks.register<Jar>("testJar") {
     from(project.the<SourceSetContainer>()["test"].output)
 }
 
+tasks.getByName("assemble").dependsOn("testJar")
+
 tasks.withType(Jar::class) {
     manifest {
         attributes["Manifest-Version"] = "1.0"
