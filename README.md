@@ -12,6 +12,34 @@ This creates a new tag and pushes the tag to main branch.
 ./gradlew release
 ```
 
+
+### Use in your project with gradle
+
+Add the source dependency to your `settings.gradle.kts`:
+
+```kotlin
+sourceControl {
+    // ... other gitRepositories
+    gitRepository(URI.create("https://github.com/sfa-siard/JdbcBase.git")) {
+        producesModule("ch.admin.bar:jdbc-base")
+    }
+}
+```
+
+`jdbc-base` provides imlementation classes and test fixtures needed for unit test. You have to define both dependencies in your `build.gradle.kts` file:
+
+```kotlin
+
+val versions = mapOf(
+    "jdbc-base" to "v2.2.9",
+)
+
+dependencies {
+    implementation("ch.admin.bar:jdbc-base:${versions["jdbc-base"]}")
+
+    testImplementation(testFixtures("ch.admin.bar:jdbc-base:${versions["jdbc-base"]}"))
+}
+```
 ### Dependencies
 ```mermaid
 flowchart TD
