@@ -3,6 +3,7 @@ import java.util.*
 
 plugins {
     `java-library`
+    `java-test-fixtures`
     id("pl.allegro.tech.build.axion-release") version "1.14.3"
     id("io.freefair.lombok") version "6.5.0"
 }
@@ -23,9 +24,12 @@ repositories {
 dependencies {
     implementation("ch.admin.bar:enterutilities:v2.2.3")
     implementation("ch.admin.bar:SqlParser:v2.2.2")
-    testImplementation("org.junit.jupiter:junit-jupiter-api:5.10.1")
-    testImplementation("org.junit.vintage:junit-vintage-engine")
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.10.1")
+
+    testFixturesImplementation("ch.admin.bar:enterutilities:v2.2.3")
+    testFixturesImplementation("ch.admin.bar:SqlParser:v2.2.2")
+    testFixturesImplementation("org.junit.jupiter:junit-jupiter-api:5.10.1")
+    testFixturesImplementation("org.junit.vintage:junit-vintage-engine")
+    testFixturesRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.10.1")
 }
 
 tasks.test {
@@ -34,6 +38,10 @@ tasks.test {
 
 tasks.register<Jar>("testJar") {
     archiveFileName.set("${project.name}-test-$version.jar")
+    from(project.the<SourceSetContainer>()["test"].output)
+}
+
+tasks.jar {
     from(project.the<SourceSetContainer>()["test"].output)
 }
 
