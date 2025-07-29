@@ -4,6 +4,7 @@ import java.util.*
 plugins {
     `java-library`
     `java-test-fixtures`
+    `maven-publish`
     id("pl.allegro.tech.build.axion-release") version "1.14.3"
     id("io.freefair.lombok") version "6.5.0"
 }
@@ -35,17 +36,6 @@ dependencies {
 tasks.test {
     useJUnitPlatform()
 }
-
-tasks.register<Jar>("testJar") {
-    archiveFileName.set("${project.name}-test-$version.jar")
-    from(project.the<SourceSetContainer>()["test"].output)
-}
-
-tasks.jar {
-    from(project.the<SourceSetContainer>()["test"].output)
-}
-
-tasks.getByName("assemble").dependsOn("testJar")
 
 tasks.withType(Jar::class) {
     manifest {
