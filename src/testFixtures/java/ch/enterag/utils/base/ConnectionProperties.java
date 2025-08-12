@@ -14,7 +14,7 @@ public class ConnectionProperties
   {
     try
     {
-      Reader rdr = new FileReader("gradle.properties");
+      Reader rdr = new FileReader("test.properties");
       load(rdr);
       rdr.close();
     }
