@@ -14,7 +14,7 @@ public class ConnectionProperties
   {
     try
     {
-      Reader rdr = new FileReader("build.properties");
+      Reader rdr = new FileReader("test.properties");
       load(rdr);
       rdr.close();
     }
@@ -74,12 +74,12 @@ public class ConnectionProperties
   
   public String getBlobPng(int iRecord)
   {
-    return getProperty("blobpng"+String.valueOf(iRecord));
+    return getProperty("blobpng"+ iRecord);
   }
   
   public String getBlobFlac(int iRecord)
   {
-    return getProperty("blobflac"+String.valueOf(iRecord));
+    return getProperty("blobflac"+ iRecord);
   }
 
 }
