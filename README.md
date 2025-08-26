@@ -26,7 +26,7 @@ sourceControl {
 }
 ```
 
-`jdbc-base` provides imlementation classes and test fixtures needed for unit test. You have to define both dependencies in your `build.gradle.kts` file:
+`jdbc-base` provides implementation classes and test fixtures needed for unit test. You have to define both dependencies in your `build.gradle.kts` file:
 
 ```kotlin
 
