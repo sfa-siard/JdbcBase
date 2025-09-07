@@ -2,17 +2,21 @@
 JdbcBase was developed as part of the SIARD project, and is used by all its JDBC wrapper implementations in order to achieve a common, truly standardized (JDBC 4.1 and SQL:2008) access to various proprietary databases.
 
 ## Getting started (for developers)
-For building the binaries, Java JDK (17 or higher) must be installed.
+For building the binaries, Java JDK 17 must be installed.
 
 ### Build the project
 ```shell
 ./gradlew clean build
 ```
 
-### Create a release
-This creates a new release, adds a tag, and pushes it to remote.
+### Versioning, tags, and releases
+Versions and tags are managed with the [Axion Release Plugin](https://github.com/allegro/axion-release-plugin) for Gradle.
+
+Short overview:
 ```shell
-./gradlew release
+./gradlew currentVersion  # Shows the current version
+
+./gradlew release         # Creates a new release, adds a tag, and pushes it to remote
 ```
 
 ### Use in your Gradle project
