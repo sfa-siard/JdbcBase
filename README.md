@@ -1,22 +1,26 @@
-# JdbcBase - SIARD JDBC-Wrapper Base
+# JdbcBase - SIARD 2.2 JDBC-Wrapper Base
 JdbcBase was developed as part of the SIARD project, and is used by all its JDBC wrapper implementations in order to achieve a common, truly standardized (JDBC 4.1 and SQL:2008) access to various proprietary databases.
+
+## Getting started (for developers)
+For building the binaries, Java JDK 17 must be installed.
 
 ### Build the project
 ```shell
 ./gradlew clean build
 ```
 
-### Create a release
-This creates a new tag and pushes the tag to main branch.
+### Versioning, tags, and releases
+Versions and tags are managed with the [Axion Release Plugin](https://github.com/allegro/axion-release-plugin) for Gradle.
+
+Short overview:
 ```shell
-./gradlew release
+./gradlew currentVersion  # Shows the current version
+
+./gradlew release         # Creates a new release, adds a tag, and pushes it to remote
 ```
 
-
-### Use in your project with gradle
-
+### Use in your Gradle project
 Add the source dependency to your `settings.gradle.kts`:
-
 ```kotlin
 sourceControl {
     // ... other gitRepositories
@@ -26,12 +30,12 @@ sourceControl {
 }
 ```
 
-`jdbc-base` provides implementation classes and test fixtures needed for unit test. You have to define both dependencies in your `build.gradle.kts` file:
+`jdbc-base` provides implementation classes and test fixtures needed for unit tests. You have to define both dependencies in your `build.gradle.kts` file:
 
 ```kotlin
 
 val versions = mapOf(
-    "jdbc-base" to "v2.2.9",
+    "jdbc-base" to "v2.2.11",
 )
 
 dependencies {
@@ -40,27 +44,11 @@ dependencies {
     testImplementation(testFixtures("ch.admin.bar:jdbc-base:${versions["jdbc-base"]}"))
 }
 ```
-### Dependencies
-```mermaid
-flowchart TD
-    jdbcbase 
-    sqlparser
-    enterutilities
-    
-    jdbcbase --> sqlparser
-    jdbcbase --> enterutilities
 
-```
-
-Note that the dependencies SqlParser and EnterUtilties are not released as artifacts. A not-so-well documented feature of Gradle is used instead: Source Dependencies. See https://blog.gradle.org/introducing-source-dependencies for an introduction.
-
-The source dependencies are defined in the `settings.gradle.kts` file.
-
-
-## Declaration
-Contributions to the codebase have been made with the support of Codeium. Codeium is AI-powered code completion tool, that is trained exclusively on natural language and source code data with [permissive licenses](https://codeium.com/blog/copilot-trains-on-gpl-codeium-does-not ). 
-
-
+## Documentation
+- [User Manual](https://github.com/sfa-siard/siard-suite/blob/main/docs/user-manual/en/user-manual.adoc)
+- [Software Architecture Document](https://github.com/sfa-siard/siard-suite/blob/main/docs/sad/sad.adoc)
+ 
 ## Varia
 ### Registering a JDBC Wrapper
 The class BaseDriver implements the static method register(), which makes sure that the wrapped JDBC driver is not activated instead of the wrapper. It is recommended that every wrapper derived from JdbcBase uses this method for registering itself with the DriverManager.
@@ -72,10 +60,8 @@ The implementation of an interface like the JDBC interface is verified by the te
 
 In addition to the tests for every JDBC interface method, JdbcBase has a number of utilities for generating random strings and random binary files, which are needed when verifying that a value inserted in a database remains unchanged when it is read.
 
-
 ### Licenses
-A copy of all licenses can be found in the doc/licenses folder of the distribution ZIP file. A copy of all third-party binaries used by JdbcBase can be found in the lib folder of the distribution.
-
+A copy of all licenses can be found in the doc/licenses folder of the distribution ZIP file. 
 
 ### Creating a Standardized Wrapper for a Proprietary JDBC Driver
 The typical users of the JdbcBase binaries are developers who want to implement a facade of the JDBC driver of a proprietary JDBC implementation of a database management system (DBMS).
@@ -112,7 +98,10 @@ Similarly, the round-trip tests
 should be implemented, where one row is inserted into each table of TestSqlDatabase and then read again, comparing their values (see the project JdbcOracle as an example).
 
 #### Query Standardization
-SIARD makes extensive use of DatabaseMetaData, so the adherence to the standard API is very important for these methods. However, only very simple single-table queries are issued by SIARD to read the table values or the sizes and lengths. Also for the upload of a table, SIARD uses relatively simple CREATE statements for types and tables and makes use of JDBC `insert()` methods for filling the tables. So for making use of a JDBC wrapper for SIARD it may be sufficient to support only a small subset of all possible SQL queries.
+SIARD makes extensive use of DatabaseMetaData, so adherence to the standard API is very important for these methods. However, only very simple single-table queries are issued by SIARD to read the table values or the sizes and lengths. Also for the upload of a table, SIARD uses relatively simple CREATE statements for types and tables and makes use of JDBC `insert()` methods for filling the tables. So for making use of a JDBC wrapper for SIARD it may be sufficient to support only a small subset of all possible SQL queries.
 
 On the other hand it may be of interest to have general, standardized JDBC interfaces to various databases that adhere all to the same standard and implement a large portion of the SQL ISO standard. In that case, the JDBC wrappers - originally only implemented to present the same interface to SiardCmd - could be extended to fully support standard SQL as well as standard JDBC.
+
+## Declaration
+Contributions to the codebase have been made with the support of Windsurf. Windsurf is AI-powered code completion tool, that is trained exclusively on natural language and source code data with [permissive licenses](https://windsurf.com/blog/copilot-trains-on-gpl-codeium-does-not). 
 
