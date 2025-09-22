@@ -23,11 +23,9 @@ repositories {
 }
 
 dependencies {
-    implementation("ch.admin.bar:enterutilities:v2.2.5")
-    implementation("ch.admin.bar:SqlParser:v2.2.4")
+    api("ch.admin.bar:enterutilities:v2.2.5")
+    api("ch.admin.bar:SqlParser:v2.2.4")
 
-    testFixturesImplementation("ch.admin.bar:enterutilities:v2.2.5")
-    testFixturesImplementation("ch.admin.bar:SqlParser:v2.2.4")
     testFixturesImplementation("org.junit.jupiter:junit-jupiter-api:5.10.1")
     testFixturesImplementation("org.junit.vintage:junit-vintage-engine")
     testFixturesRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.10.1")
@@ -50,5 +48,3 @@ tasks.withType(Jar::class) {
 
     }
 }
-
-
