@@ -24,7 +24,7 @@ repositories {
 
 dependencies {
     api("ch.admin.bar:enterutilities:v2.2.5")
-    api("ch.admin.bar:SqlParser:v2.2.4")
+    api("ch.admin.bar:SqlParser:v2.2.5-test")
 
     testFixturesImplementation("org.junit.jupiter:junit-jupiter-api:5.10.1")
     testFixturesImplementation("org.junit.vintage:junit-vintage-engine")
